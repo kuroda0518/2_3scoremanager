@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file="/common/header.jsp" %>
 <%@ include file="/common/menu.jsp" %>
-aaa
 
 
                    <!-- 横並びの設定 -->
@@ -19,3 +18,6 @@ aaa
 </div>
 
 <%@ include file="/common/footer.jsp" %>
+
+
+aaa
