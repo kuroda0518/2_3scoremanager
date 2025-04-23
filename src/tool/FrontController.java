@@ -14,7 +14,7 @@ public class FrontController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            // アクション名を取得（例: LoginExecute）
+            // パスを取得（例：StudentRegister）
             String path = request.getServletPath().replaceFirst("^/", "").replace(".action", "");
 
             // パッケージ判定
@@ -23,14 +23,14 @@ public class FrontController extends HttpServlet {
                 packageName = "scoremanager.login";
             }
 
-            // クラス名組み立て
+            // クラス名を組み立て
             String className = packageName + "." + path + "Action";
 
-            // Action実行
+            // Actionクラスを実行
             Action action = (Action) Class.forName(className).getDeclaredConstructor().newInstance();
             String view = action.execute(request, response);
 
-            // JSPへのフォワード先振り分け
+            // JSPへフォワード
             if (view.startsWith("login")) {
                 request.getRequestDispatcher("/login/" + view).forward(request, response);
             } else {
