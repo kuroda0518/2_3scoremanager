@@ -50,5 +50,53 @@ public class StudentDao extends Dao {
             }
         }
         return list;
+
     }
+    public int insert(Student student) throws Exception {
+        Connection con = getConnection();  // ← Dao クラスのメソッドをそのまま使用！
+
+        String sql = "INSERT INTO student (no, name, ent_year, class_num, is_attend, school_cd) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1, student.getNo());
+        st.setString(2, student.getName());
+        st.setInt(3, student.getEntYear());
+        st.setString(4, student.getClassNum());
+        st.setBoolean(5, student.getIsAttend());
+        st.setString(6, student.getSchoolCd());
+
+        int rows = st.executeUpdate();
+
+        st.close();
+        con.close();
+
+        return rows;
+    }
+    public Student find(String no) throws Exception {
+        Connection con = getConnection();
+
+        String sql = "SELECT * FROM student WHERE no = ?";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1, no);
+
+        ResultSet rs = st.executeQuery();
+        Student student = null;
+
+        if (rs.next()) {
+            student = new Student();
+            student.setNo(rs.getString("no"));
+            student.setName(rs.getString("name"));
+            student.setEntYear(rs.getInt("ent_year"));
+            student.setClassNum(rs.getString("class_num"));
+            student.setIsAttend(rs.getBoolean("is_attend"));
+            student.setSchoolCd(rs.getString("school_cd"));
+        }
+
+        rs.close();
+        st.close();
+        con.close();
+
+        return student;
+    }
+
+
 }
