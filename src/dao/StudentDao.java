@@ -52,6 +52,7 @@ public class StudentDao extends Dao {
         return list;
 
     }
+    //学生登録のdao
     public int insert(Student student) throws Exception {
         Connection con = getConnection();  // ← Dao クラスのメソッドをそのまま使用！
 
@@ -71,6 +72,8 @@ public class StudentDao extends Dao {
 
         return rows;
     }
+
+
     public Student find(String no) throws Exception {
         Connection con = getConnection();
 
@@ -97,6 +100,29 @@ public class StudentDao extends Dao {
 
         return student;
     }
+
+ // 学生情報を更新するメソッド（主キーは no）
+    public int update(Student student) throws Exception {
+        Connection con = getConnection();
+
+        String sql = "UPDATE student SET name = ?, ent_year = ?, class_num = ?, is_attend = ?, school_cd = ? WHERE no = ?";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1, student.getName());
+        st.setInt(2, student.getEntYear());
+        st.setString(3, student.getClassNum());
+        st.setBoolean(4, student.getIsAttend());
+        st.setString(5, student.getSchoolCd());
+        st.setString(6, student.getNo());
+
+        int rows = st.executeUpdate();
+
+        st.close();
+        con.close();
+
+        return rows;
+    }
+
+
 
 
 }
