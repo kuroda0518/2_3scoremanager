@@ -13,7 +13,7 @@ import bean.Student;
 import dao.StudentDao;
 import tool.Action;
 
-public class StudentRegisterAction extends Action {
+public class StudentCreateAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -60,11 +60,11 @@ public class StudentRegisterAction extends Action {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("message", "エラーが発生しました");
-            return "student_register_result.jsp";
+            return "student_create_result.jsp";
         }
         if (hasError) {
             request.setAttribute("entYearList", entYearList); // ← これを追加
-            return "student_register.jsp";
+            return "student_create.jsp";
         }
 
         // 登録処理
@@ -81,12 +81,12 @@ public class StudentRegisterAction extends Action {
             dao.insert(student);
 
             request.setAttribute("message", "学生を登録しました。");
-            return "student_register_result.jsp";
+            return "student_create_result.jsp";
 
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("message", "登録中にエラーが発生しました。");
-            return "student_register_result.jsp";
+            return "student_create_result.jsp";
         }
     }
 }

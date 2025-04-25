@@ -8,7 +8,7 @@
 <div style="margin-left:200px; padding:20px;">
     <h2>学生管理</h2>
 <div style="text-align: right; margin-bottom: 10px;">
-        <a href="${pageContext.request.contextPath}/StudentRegister.action" style="background-color: #3182ce; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">
+        <a href="${pageContext.request.contextPath}/StudentCreate.action" style="background-color: #3182ce; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">
             新規登録
         </a>
     </div>
