@@ -2,9 +2,18 @@ package bean;
 
 import java.io.Serializable;
 
-public class School implements Serializable {
+public class Subject implements Serializable {
+    private String schoolCd;
     private String cd;
     private String name;
+
+    public String getSchoolCd() {
+        return schoolCd;
+    }
+
+    public void setSchoolCd(String schoolCd) {
+        this.schoolCd = schoolCd;
+    }
 
     public String getCd() {
         return cd;

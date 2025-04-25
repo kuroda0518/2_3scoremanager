@@ -20,7 +20,7 @@ public class StudentListAction extends Action {
         String classNum = request.getParameter("classNum");
         String isAttendStr = request.getParameter("isAttend");
 
-        // ログイン中の教員から school_cd を取得（仮に固定なら "tes"）
+        // ログイン中の教員から school_cd を取得（いったん "tes"）
         String schoolCd = "tes";
 
         // 型変換

@@ -8,6 +8,7 @@
 <head>
     <title>学生情報変更</title>
     <style>
+    
         body {
             font-family: sans-serif;
             background-color: #f9f9f9;
