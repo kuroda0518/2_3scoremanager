@@ -1,6 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ include file="/common/header.jsp" %>
 <%@ include file="/common/menu.jsp" %>
+<%@ page import="bean.Teacher" %>
+
+
+
+<%
+    Teacher dummy = new Teacher();  //ログインできるuserをいったん書いとく
+    dummy.setId("admin1");          //ログイン出来たら消しておっけ
+    dummy.setName("管理者1");
+    dummy.setSchoolCd("tes");
+    session.setAttribute("user", dummy);
+%>
+
 
 <!-- 横並びの設定 -->
 <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">

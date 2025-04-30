@@ -1,5 +1,4 @@
 package scoremanager.main;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -8,31 +7,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Student;
+import bean.Teacher;
 import dao.ClassNumDao;
 import dao.StudentDao;
 import tool.Action;
 
 public class StudentListAction extends Action {
-
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        // フォームからの入力値取得
+        // フォームからの入力取得
         String entYearStr = request.getParameter("entYear");
         String classNum = request.getParameter("classNum");
         String isAttendStr = request.getParameter("isAttend");
 
-        // ログイン中の教員から school_cd を取得（いったん "tes"）
-        String schoolCd = "tes";
+        // セッションからログイン中のユーザー取得
+
+        Teacher user = (Teacher) request.getSession().getAttribute("user");
+        if (user == null) {
+            response.sendRedirect("Login.action");
+            return null;
+        }
+        String schoolCd = user.getSchoolCd();
+
 
         // 型変換
         Integer entYear = (entYearStr != null && !entYearStr.isEmpty()) ? Integer.parseInt(entYearStr) : null;
         Boolean isAttend = (isAttendStr != null) ? true : null;
 
-        // 学生データ取得
+        // 学生リスト取得
         StudentDao studentDao = new StudentDao();
         List<Student> studentList = studentDao.filter(schoolCd, entYear, classNum, isAttend);
         request.setAttribute("studentList", studentList);
 
-        // 入学年度リスト（例：2015〜現在+1年）
+        // 入学年度リスト
         List<Integer> entYearList = new ArrayList<>();
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
         for (int i = thisYear - 10; i <= thisYear + 1; i++) {
@@ -40,12 +46,11 @@ public class StudentListAction extends Action {
         }
         request.setAttribute("entYearList", entYearList);
 
-        // クラス番号リスト（DBから取得）
+        // クラス番号リスト
         ClassNumDao classNumDao = new ClassNumDao();
         List<String> classNumList = classNumDao.findAll(schoolCd);
         request.setAttribute("classNumList", classNumList);
 
-        // 表示するJSPへフォワード
         return "student_list.jsp";
     }
 }

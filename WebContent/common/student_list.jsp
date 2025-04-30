@@ -106,7 +106,7 @@
                                 </c:otherwise>
                             </c:choose>
                         </td>
-                        <td><a href="#">変更</a></td>
+						<td><a href="${pageContext.request.contextPath}/StudentUpdate.action?no=${stu.no}">変更</a></td>
                     </tr>
                 </c:forEach>
             </table>
