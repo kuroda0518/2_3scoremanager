@@ -24,27 +24,18 @@
             </tr>
         </thead>
         <tbody>
-            <!-- subjectがnullまたはemptyか確認 -->
-            <c:if test="${not empty subject}">
-                <c:forEach var="s" items="${subject}">
-                    <tr>
-                        <td>${s.code}</td>
-                        <td>${s.name}</td>
-                        <td>
-                            <a href="<%= request.getContextPath() %>/SubjectUpdate.action?cd=${s.code}">変更</a>
-                            &nbsp;
-                            <a href="<%= request.getContextPath() %>/SubjectDeleteConfirm.action?cd=${s.code}">削除</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </c:if>
-
-            <!-- subjectがnullまたはemptyの場合のメッセージ -->
-            <c:if test="${empty subject}">
+            <!-- ここで受け取る属性名を subject に修正 -->
+            <c:forEach var="s" items="${subject}">
                 <tr>
-                    <td colspan="3" style="text-align: center; color: red;">データがありません。</td>
+                    <td>${s.code}</td>
+                    <td>${s.name}</td>
+                    <td>
+                        <a href="<%= request.getContextPath() %>/SubjectUpdate.action?cd=${s.code}">変更</a>
+                        &nbsp;
+                        <a href="<%= request.getContextPath() %>/SubjectDeleteConfirm.action?cd=${s.code}">削除</a>
+                    </td>
                 </tr>
-            </c:if>
+            </c:forEach>
         </tbody>
     </table>
 </div>
