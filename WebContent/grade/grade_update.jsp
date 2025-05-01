@@ -10,7 +10,7 @@
     <form action="<%= request.getContextPath() %>/GradeUpdate.action" method="post" style="width: 400px;">
         <div style="margin-bottom: 15px;">
             <label for="gradeUpdate">変更する成績を入力</label><br>
-            <input type="text" id="gradeUpdate" name="gradeUpdate" value="${subject.code}" readonly style="width: 100%;" />
+            <input type="text" id="gradeUpdate" name="gradeUpdate" value="${gradeupdate.name}" readonly style="width: 100%;" />
         </div>
 
         <div style="margin-bottom: 15px;">
