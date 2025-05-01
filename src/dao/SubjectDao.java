@@ -36,4 +36,23 @@ public class SubjectDao extends Dao{
         return list;
     }
 
+
+  //科目登録のdao
+    public int insert(Subject subject) throws Exception {
+        Connection con = getConnection();  // ← Dao クラスのメソッドをそのまま使用！
+
+        String sql = "INSERT INTO SUBJECT (SCHOOL_CD, CD, NAME) VALUES (?, ?, ?)";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1, subject.getSchoolCd());
+        st.setString(2, subject.getCd());
+        st.setString(3, subject.getName());
+
+        int rows = st.executeUpdate();
+
+        st.close();
+        con.close();
+
+        return rows;
+    }
 }
+

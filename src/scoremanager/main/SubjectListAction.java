@@ -20,6 +20,6 @@ public class SubjectListAction extends Action {
         // ▼ リクエストに格納
         request.setAttribute("subject", subject);
 
-        return "../../common/subject_list.jsp";
+        return "subject_list.jsp";
     }
 }
