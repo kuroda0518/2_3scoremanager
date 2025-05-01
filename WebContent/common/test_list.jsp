@@ -8,7 +8,7 @@
 <div style="margin-left:200px; padding:20px;">
     <h2>成績管理</h2>
 <div style="text-align: right; margin-bottom: 10px;">
-        <a href="${pageContext.request.contextPath}/StudentCreate.action" style="background-color: #3182ce; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">
+        <a href="${pageContext.request.contextPath}/TestCreate.action" style="background-color: #3182ce; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">
             新規登録
         </a>
     </div>
@@ -52,7 +52,7 @@
   }
 </style>
 
-<form action="<%= request.getContextPath() %>/StudentList.action" method="get" class="filter-form">
+<form action="<%= request.getContextPath() %>/TestList.action" method="get" class="filter-form">
     <label>入学年度：</label>
     <select name="entYear">
         <option value="">------</option>
