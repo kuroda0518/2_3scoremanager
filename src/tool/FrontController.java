@@ -2,6 +2,7 @@ package tool;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,32 +15,27 @@ public class FrontController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            // パスを取得（例：StudentRegister）
+            // リクエストパスからアクション名取得（例：StudentList.action → StudentList）
             String path = request.getServletPath().replaceFirst("^/", "").replace(".action", "");
 
-            // パッケージ判定
+            // パッケージを固定（すべて scoremanager.main として処理）
             String packageName = "scoremanager.main";
-            if (path.startsWith("Login") || path.startsWith("Logout")) {
-                packageName = "scoremanager.login";
-            }
-
-            // クラス名を組み立て
             String className = packageName + "." + path + "Action";
 
-            // Actionクラスを実行
+            // 対応する Action クラスを読み込んで実行
             Action action = (Action) Class.forName(className).getDeclaredConstructor().newInstance();
             String view = action.execute(request, response);
 
-            // JSPへフォワード
-            if (view.startsWith("login")) {
-                request.getRequestDispatcher("/login/" + view).forward(request, response);
-            } else {
-                request.getRequestDispatcher("/common/" + view).forward(request, response);
-            }
+            // null や 空文字なら何もフォワードしない（リダイレクト処理などを想定）
+            if (view == null || view.isEmpty()) return;
+
+            // 画面ファイルへのパス（常に /common 配下にあるとする）
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/common/" + view);
+            dispatcher.forward(request, response);
 
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new ServletException(e);
+            e.printStackTrace(); // コンソールに詳細表示
+            throw new ServletException("FrontController Error: " + e.getMessage(), e);
         }
     }
 
