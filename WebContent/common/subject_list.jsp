@@ -12,6 +12,7 @@
         <a href="<%= request.getContextPath() %>/SubjectCreate.action">新規登録</a>
     </div>
 
+<!-- この黄色いの気にしないで -->
         <table border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse;">
         <thead style="background-color: #f0f0f0;">
             <tr>
