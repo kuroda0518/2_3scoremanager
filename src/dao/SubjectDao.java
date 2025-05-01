@@ -16,7 +16,8 @@ public class SubjectDao extends Dao{
         List<Subject> list = new ArrayList<>();
         Connection con = getConnection();
 
-        String sql = "SELECT * FROM SUBJECT";
+        String sql = "SELECT SCHOOL_CD AS schoolCd, CD AS cd, NAME AS name FROM SUBJECT";
+;
         PreparedStatement st = con.prepareStatement(sql);
         ResultSet rs = st.executeQuery();
 

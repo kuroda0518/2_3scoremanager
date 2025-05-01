@@ -7,6 +7,8 @@ public class Subject implements Serializable {
     private String cd;
     private String name;
 
+    public Subject() {}
+
     public String getSchoolCd() {
         return schoolCd;
     }

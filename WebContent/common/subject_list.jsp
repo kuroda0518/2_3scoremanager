@@ -26,15 +26,18 @@
         <tbody>
             <!-- ここで受け取る属性名を subject に修正 -->
             <c:forEach var="s" items="${subject}">
-                <tr>
-                    <td>${s.code}</td>
-                    <td>${s.name}</td>
-                    <td>
-                        <a href="<%= request.getContextPath() %>/SubjectUpdate.action?cd=${s.code}">変更</a>
-                        &nbsp;
-                        <a href="<%= request.getContextPath() %>/SubjectDeleteConfirm.action?cd=${s.code}">削除</a>
-                    </td>
-                </tr>
+<c:forEach var="s" items="${subject}">
+    <tr>
+        <td>${s.cd}</td> <!-- ← 修正 -->
+        <td>${s.name}</td>
+        <td>
+            <a href="<%= request.getContextPath() %>/SubjectUpdate.action?cd=${s.cd}">変更</a> <!-- ← 修正 -->
+            &nbsp;
+            <a href="<%= request.getContextPath() %>/SubjectDeleteConfirm.action?cd=${s.cd}">削除</a> <!-- ← 修正 -->
+        </td>
+    </tr>
+</c:forEach>
+
             </c:forEach>
         </tbody>
     </table>
