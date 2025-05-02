@@ -5,18 +5,19 @@
 <jsp:include page="/common/header.jsp" />
 <jsp:include page="/common/menu.jsp" />
 
+
 <div style="margin-left:200px; padding: 20px;">
     <h2>科目情報変更</h2>
 
-    <form action="<%= request.getContextPath() %>/SubjectUpdate.action" method="post" style="width: 400px;">
+    <form action="<%= request.getContextPath() %>/SubjectUpdateExecute.action" method="post" style="width: 400px;">
         <div style="margin-bottom: 15px;">
             <label for="subjectCode">科目コード</label><br>
-            <input type="text" id="subjectCode" name="subjectCode" value="${subject.code}" readonly style="width: 100%;" />
+            <input type="text" id="subjectCode" name="subcd" value="${subject.cd}" readonly style="width: 100%;" />
         </div>
 
         <div style="margin-bottom: 15px;">
             <label for="subjectName">科目名</label><br>
-            <input type="text" id="subjectName" name="subjectName" value="${subject.name}" required style="width: 100%;" />
+            <input type="text" id="subjectName" name="subname" value="${subject.name}" required style="width: 100%;" />
         </div>
 
         <div style="margin-bottom: 15px;">

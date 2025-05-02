@@ -55,6 +55,51 @@ public class SubjectDao extends Dao{
 
         return rows;
     }
+
+    //選択したcdと一致したデータを取得
+    public Subject cdSelect(String cd) throws Exception {
+        Connection con = getConnection();
+
+        String sql = "SELECT * FROM subject WHERE cd = ?";
+        PreparedStatement sub = con.prepareStatement(sql);
+        sub.setString(1, cd);
+
+        ResultSet rs = sub.executeQuery();
+        Subject subject = null;
+
+        if (rs.next()) {
+        	subject = new Subject();
+            subject.setCd(rs.getString("cd"));
+            subject.setName(rs.getString("name"));
+            subject.setSchoolCd(rs.getString("school_cd"));
+        }
+
+        rs.close();
+        sub.close();
+        con.close();
+
+        return subject;
+    }
+
+    //更新
+    public int update(Subject subject) throws Exception {
+        Connection con = getConnection();
+
+        String sql = "UPDATE subject SET name = ? WHERE cd = ?";
+        PreparedStatement sub = con.prepareStatement(sql);
+        sub.setString(1, subject.getName());
+        sub.setString(2, subject.getCd());
+
+
+        int subname = sub.executeUpdate();
+
+        sub.close();
+        con.close();
+
+        return subname;
+    }
+
 }
+
 
 
