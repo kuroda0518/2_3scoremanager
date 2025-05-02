@@ -14,12 +14,13 @@ public class SubjectListAction extends Action {
         request.setCharacterEncoding("UTF-8");
         SubjectDao dao = new SubjectDao();
 
+
         // 科目一覧
         List<Subject> subject = dao.selectAll();
 
         // ▼ リクエストに格納
         request.setAttribute("subject", subject);
 
-        return "../../common/subject_list.jsp";
+        return "subject_list.jsp";
     }
 }
