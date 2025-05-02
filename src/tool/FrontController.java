@@ -16,7 +16,8 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
         try {
             // リクエストパスからアクション名取得（例：StudentList.action → StudentList）
-            String path = request.getServletPath().replaceFirst("^/", "").replace(".action", "");
+            String path = request.getServletPath().replaceFirst("^/", "").replace(".action", "")
+            		.replace(".a", "A").replace('/', '.');
 
             // パッケージを固定（すべて scoremanager.main として処理）
             String packageName = "scoremanager.main";
