@@ -6,18 +6,16 @@ import javax.servlet.http.HttpSession;
 
 import tool.Action;
 
-public class LogoutAction extends Action{
-	public String execute(
-			HttpServletRequest request, HttpServletResponse response
-			) throws Exception{
-		HttpSession session=request.getSession();
+public class LogoutAction extends Action {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session = request.getSession();
 
+        // loginUser を使うように修正
+        if (session.getAttribute("loginUser") != null) {
+            session.removeAttribute("loginUser");
+            return "/main/logout-out.jsp"; // ← /common/ にある前提
+        }
 
-		if (session.getAttribute("customer")!=null){
-			session.removeAttribute("customer");
-			return "logout-out.jsp";
-		}
-		return "logout-error.jsp";
-	}
-
+        return "logout-error.jsp";
+    }
 }
