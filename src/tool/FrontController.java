@@ -15,27 +15,41 @@ public class FrontController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            // リクエストパスからアクション名取得（例：StudentList.action → StudentList）
-            String path = request.getServletPath().replaceFirst("^/", "").replace(".action", "")
-            		.replace(".a", "A").replace('/', '.');
+            // リクエストされたURLのパスからアクション名を抽出（例：/main/Login.action → Login）
+            String path = request.getServletPath()
+                    .replaceFirst("^/", "")       // 先頭のスラッシュ削除
+                    .replace(".action", "");      // 拡張子を除去
 
-            // パッケージを固定（すべて scoremanager.main として処理）
+            // スラッシュ区切りがある場合は最後の部分だけ取り出す
+            int lastSlash = path.lastIndexOf('/');
+            if (lastSlash != -1) {
+                path = path.substring(lastSlash + 1);
+            }
+
+            // デフォルトパッケージ
             String packageName = "scoremanager.main";
+
+            // ログイン・ログアウトは login パッケージで処理
+            if (path.startsWith("Login") || path.startsWith("Logout")) {
+                packageName = "scoremanager.login";
+            }
+
+            // 完全なクラス名を組み立て（例：scoremanager.login.LoginAction）
             String className = packageName + "." + path + "Action";
 
-            // 対応する Action クラスを読み込んで実行
+            // Actionクラスを動的に呼び出して実行
             Action action = (Action) Class.forName(className).getDeclaredConstructor().newInstance();
             String view = action.execute(request, response);
 
-            // null や 空文字なら何もフォワードしない（リダイレクト処理などを想定）
-            if (view == null || view.isEmpty()) return;
-
-            // 画面ファイルへのパス（常に /common 配下にあるとする）
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/common/" + view);
-            dispatcher.forward(request, response);
+            // JSPのパスが返ってきた場合はフォワード（nullや空文字なら何もしない）
+            if (view != null && !view.isEmpty()) {
+                String jspPath = view.startsWith("/") ? view : "/common/" + view;
+                RequestDispatcher dispatcher = request.getRequestDispatcher(jspPath);
+                dispatcher.forward(request, response);
+            }
 
         } catch (Exception e) {
-            e.printStackTrace(); // コンソールに詳細表示
+            e.printStackTrace(); // ログ出力
             throw new ServletException("FrontController Error: " + e.getMessage(), e);
         }
     }

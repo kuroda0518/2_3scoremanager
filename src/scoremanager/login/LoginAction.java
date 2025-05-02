@@ -1,4 +1,4 @@
-package scoremanager.main;
+package scoremanager.login;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +25,7 @@ public class LoginAction extends Action{
 			session.setAttribute("customer",customer);
 			return "main.jsp";
 		}
-		return "login-error.jsp";
+		return "/main/login-error.jsp";
 	}
 
 }
