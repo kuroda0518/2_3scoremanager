@@ -11,30 +11,31 @@ import bean.Subject;
 
 public class SubjectDao extends Dao{
 
-    // 科目一覧をすべて取得
-    public List<Subject> selectAll() throws Exception {
-        List<Subject> list = new ArrayList<>();
-        Connection con = getConnection();
+	// schoolCdで絞り込むバージョン
+	public List<Subject> selectBySchool(String schoolCd) throws Exception {
+	    List<Subject> list = new ArrayList<>();
+	    Connection con = getConnection();
 
-        String sql = "SELECT SCHOOL_CD AS schoolCd, CD AS cd, NAME AS name FROM SUBJECT";
-;
-        PreparedStatement st = con.prepareStatement(sql);
-        ResultSet rs = st.executeQuery();
+	    String sql = "SELECT SCHOOL_CD AS schoolCd, CD AS cd, NAME AS name FROM SUBJECT WHERE SCHOOL_CD = ?";
+	    PreparedStatement st = con.prepareStatement(sql);
+	    st.setString(1, schoolCd);
+	    ResultSet rs = st.executeQuery();
 
-        while (rs.next()) {
-            Subject subject = new Subject();
-            subject.setSchoolCd(rs.getString("schoolCd"));
-            subject.setCd(rs.getString("cd"));
-            subject.setName(rs.getString("name"));
-            list.add(subject);
-        }
+	    while (rs.next()) {
+	        Subject subject = new Subject();
+	        subject.setSchoolCd(rs.getString("schoolCd"));
+	        subject.setCd(rs.getString("cd"));
+	        subject.setName(rs.getString("name"));
+	        list.add(subject);
+	    }
 
-        rs.close();
-        st.close();
-        con.close();
+	    rs.close();
+	    st.close();
+	    con.close();
 
-        return list;
-    }
+	    return list;
+	}
+
 
 
   //科目登録のdao
