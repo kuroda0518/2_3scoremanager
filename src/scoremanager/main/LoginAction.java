@@ -7,16 +7,7 @@ import javax.servlet.http.HttpSession;
 import bean.Customer;
 import dao.CustomerDAO;
 import tool.Action;
-/*<<<<<<< HEAD*/
 
-
-
-/*public class LoginAction extends Action {
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
-        return "login_dummy.jsp";  // 仮のJSPを返す
-    }
-}
-=======*/
 
 
 public class LoginAction extends Action{
@@ -39,4 +30,4 @@ public class LoginAction extends Action{
 
 }
 
-//>>>>>>> 2adb4da8a49b7cbd977dbd40744f6060258c842c
+
