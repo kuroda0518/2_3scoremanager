@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Subject;
+import bean.Teacher;
 import dao.SubjectDao;
 import tool.Action;
 
@@ -18,24 +19,21 @@ public class SubjectCreateAction extends Action {
 
         request.setCharacterEncoding("UTF-8");
 
-        String schoolCd = request.getParameter("schoolCd");
+        // ▼ ログイン中の先生から schoolCd を取得
+        Teacher user = (Teacher) request.getSession().getAttribute("user");
+        String schoolCd = user.getSchoolCd();
+
+        // ▼ 入力値取得
         String cd = request.getParameter("cd");
         String name = request.getParameter("name");
 
         boolean hasError = false;
 
-        // 入力値保持
-        request.setAttribute("schoolCd", schoolCd);
+        // ▼ 入力値保持（フォームに再表示用）
         request.setAttribute("cd", cd);
         request.setAttribute("name", name);
 
-        // 学校コードバリデーション
-        if (schoolCd == null || schoolCd.isEmpty()) {
-            hasError = true;
-        }
-        // 必要であれば、学校コードの形式チェックなどのバリデーションを追加
-
-        // 科目コードバリデーション
+        // ▼ 科目コードバリデーション
         if (cd == null || cd.isEmpty()) {
             hasError = true;
         } else if (!cd.matches("[A-Z0-9]{3}")) {
@@ -44,13 +42,9 @@ public class SubjectCreateAction extends Action {
         } else {
             try {
                 SubjectDao dao = new SubjectDao();
-                List<Subject> existingSubjects = dao.selectAll();
+                List<Subject> existingSubjects = dao.selectBySchool(schoolCd);  // ← 学校ごとに限定
                 for (Subject s : existingSubjects) {
-                    if (s.getSchoolCd() != null && s.getSchoolCd().equals(schoolCd) && s.getCd().equals(cd)) {
-                        request.setAttribute("cdError", "その学校コードと科目コードの組み合わせは既に登録されています");
-                        hasError = true;
-                        break;
-                    } else if (s.getSchoolCd() == null && schoolCd == null && s.getCd().equals(cd)) {
+                    if (s.getCd().equals(cd)) {
                         request.setAttribute("cdError", "その科目コードは既に登録されています");
                         hasError = true;
                         break;
@@ -63,20 +57,16 @@ public class SubjectCreateAction extends Action {
             }
         }
 
-        // 科目名バリデーション
+        // ▼ 科目名バリデーション
         if (name == null || name.isEmpty()) {
             hasError = true;
         } else {
             try {
                 SubjectDao dao = new SubjectDao();
-                List<Subject> existingSubjects = dao.selectAll();
+                List<Subject> existingSubjects = dao.selectBySchool(schoolCd);  // ← 同じく限定
                 for (Subject s : existingSubjects) {
-                    if (s.getSchoolCd() != null && s.getSchoolCd().equals(schoolCd) && s.getName().equals(name)) {
-                        request.setAttribute("nameError", "その学校コードでは既に同じ科目名の科目が登録されています");
-                        hasError = true;
-                        break;
-                    } else if (s.getSchoolCd() == null && schoolCd == null && s.getName().equals(name)) {
-                        request.setAttribute("nameError", "既に同じ科目名の科目が登録されています");
+                    if (s.getName().equals(name)) {
+                        request.setAttribute("nameError", "その科目名は既に登録されています");
                         hasError = true;
                         break;
                     }
@@ -92,7 +82,7 @@ public class SubjectCreateAction extends Action {
             return "subject_create.jsp";
         }
 
-        // 登録処理
+        // ▼ 登録処理
         try {
             Subject subject = new Subject();
             subject.setSchoolCd(schoolCd);
@@ -101,8 +91,6 @@ public class SubjectCreateAction extends Action {
 
             SubjectDao dao = new SubjectDao();
             dao.insert(subject);
-            // 実際の登録処理に合わせて SubjectDao に insert メソッドを作成し、呼び出す必要があります。
-            // 例: dao.insert(subject);
 
             request.setAttribute("message", "科目を登録しました。");
             return "subject_create_result.jsp";

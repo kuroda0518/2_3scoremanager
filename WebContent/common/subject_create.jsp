@@ -26,13 +26,7 @@
             <div style="color: orange;">${nameError}</div>
         </c:if>
 
-        <label>学校コード：</label><br>
-        <input type="text" name="schoolCd" value="${schoolCd}" required
-               placeholder="学校コードを入力"
-               style="width: 100%; padding: 6px; margin-bottom: 8px;"><br>
-        <c:if test="${not empty schoolCdError}">
-            <div style="color: orange;">${schoolCdError}</div>
-        </c:if>
+
 
         <input type="submit" value="登録"
                style="padding: 8px 16px; background-color: #4a5568; color: white; border: none; border-radius: 4px;">
