@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" %>
-<%@include file="../header.html" %>
+<jsp:include page="/common/header.jsp" />
 
     <meta charset="UTF-8">
     <title>ログアウト</title>
@@ -46,5 +46,5 @@
 
 <p class="logout-message">ログアウトしました。</p>
 
-<a href="login-in.jsp">ログイン</a>
-<%@include file="../footer.html" %>
+<a href="/main/login-in.jsp">ログイン</a>
+<jsp:include page="/common/footer.jsp" />
