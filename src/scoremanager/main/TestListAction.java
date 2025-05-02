@@ -49,7 +49,7 @@ public class TestListAction extends Action {
 
         // 科目リスト取得
         SubjectDao subjectDao = new SubjectDao();
-        List<Subject> subjectList = subjectDao.filter(schoolCd, entYear, classNum, isAttend);
+        List<Subject> subjectList = subjectDao.filter(schoolCd);
         request.setAttribute("subjectList", subjectList);
 
         // クラス番号リスト
