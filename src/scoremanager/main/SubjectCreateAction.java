@@ -20,7 +20,7 @@ public class SubjectCreateAction extends Action {
         request.setCharacterEncoding("UTF-8");
 
         // ▼ ログイン中の先生から schoolCd を取得
-        Teacher user = (Teacher) request.getSession().getAttribute("user");
+        Teacher user = (Teacher) request.getSession().getAttribute("loginUser");
         String schoolCd = user.getSchoolCd();
 
         // ▼ 入力値取得
