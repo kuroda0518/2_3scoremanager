@@ -26,7 +26,7 @@ public class StudentUpdateExecuteAction extends Action {
         }
 
         // ログイン中の教員から schoolCd を取得
-        Teacher user = (Teacher) request.getSession().getAttribute("user");
+        Teacher user = (Teacher) request.getSession().getAttribute("loginUser");
         String schoolCd = user.getSchoolCd();
 
         Student student = new Student();
