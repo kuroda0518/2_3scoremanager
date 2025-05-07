@@ -83,11 +83,12 @@
         <c:when test="${not empty studentList}">
             <table border="1" cellpadding="5" cellspacing="0" style="width:100%; text-align:center;">
                 <tr>
+                    <th></th>
                     <th>学生番号</th>
                     <th>科目番号</th>
                     <th>学校番号</th>
                     <th>回数</th>
-                    <th>在学中</th>
+                    <th>点数</th>
                     <th>操作</th>
                 </tr>
                 <c:forEach var="tes" items="${testList}">

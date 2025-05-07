@@ -10,7 +10,6 @@ import bean.Student;
 import bean.Teacher;
 import dao.ClassNumDao;
 import dao.StudentDao;
-import dao.SubjectDao;
 import tool.Action;
 
 public class TestListAction extends Action {
@@ -22,7 +21,7 @@ public class TestListAction extends Action {
 
         // セッションからログイン中のユーザー取得
 
-        Teacher user = (Teacher) request.getSession().getAttribute("user");
+        Teacher user = (Teacher) request.getSession().getAttribute("loginUser");
         if (user == null) {
             response.sendRedirect("Login.action");
             return null;
@@ -46,11 +45,6 @@ public class TestListAction extends Action {
             entYearList.add(i);
         }
         request.setAttribute("entYearList", entYearList);
-
-        // 科目リスト取得
-        SubjectDao subjectDao = new SubjectDao();
-        List<Subject> subjectList = subjectDao.filter(schoolCd);
-        request.setAttribute("subjectList", subjectList);
 
         // クラス番号リスト
         ClassNumDao classNumDao = new ClassNumDao();
