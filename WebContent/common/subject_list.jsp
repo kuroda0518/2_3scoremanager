@@ -27,7 +27,7 @@
         <td>${s.cd}</td>         <td>${s.name}</td>
         <td>
             <a href="<%= request.getContextPath() %>/SubjectUpdate.action?cd=${s.cd}">変更</a>             &nbsp;
-            <a href="<%= request.getContextPath() %>/SubjectDeleteConfirm.action?cd=${s.cd}">削除</a>         </td>
+            <a href="<%= request.getContextPath() %>/SubjectDelete.action?cd=${s.cd}">削除</a>         </td>
     </tr>
 </c:forEach>
         </tbody>
