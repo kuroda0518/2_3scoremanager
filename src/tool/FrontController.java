@@ -25,7 +25,6 @@ public class FrontController extends HttpServlet {
             if (lastSlash != -1) {
                 path = path.substring(lastSlash + 1);
             }
-
             // デフォルトパッケージ
             String packageName = "scoremanager.main";
 
