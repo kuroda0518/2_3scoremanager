@@ -104,7 +104,7 @@ public class SubjectDao extends Dao{
 		Connection con = getConnection();
 
 		//SQL文の準備
-		PreparedStatement st = con.prepareStatement("DELETE FROM SUBJECT WHERE CD=?");
+		PreparedStatement st = con.prepareStatement("DELETE FROM SUBJECT WHERE CD=? ");
 		st.setString(1,subject.getCd());
 
 		int num = st.executeUpdate();
