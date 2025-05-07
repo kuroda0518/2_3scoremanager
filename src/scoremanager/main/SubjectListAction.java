@@ -15,7 +15,7 @@ public class SubjectListAction extends Action {
 	    request.setCharacterEncoding("UTF-8");
 
 	    // セッションからログイン中の先生を取得
-	    Teacher user = (Teacher) request.getSession().getAttribute("user");
+	    Teacher user = (Teacher) request.getSession().getAttribute("loginUser");
 	    if (user == null) {
 	        response.sendRedirect("Login.action");
 	        return null;

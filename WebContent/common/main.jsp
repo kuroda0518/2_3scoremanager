@@ -17,7 +17,7 @@
         <div><a href="#" style="text-decoration: none;">成績参照</a></div>
     </div>
 
-    <a href="../SubjectList.action" style="background-color: #d6d8fb; padding: 20px; text-align: center; border-radius: 10px; text-decoration: none;">科目管理</a>
+    <a href="../scoremanager/SubjectList.action" style="background-color: #d6d8fb; padding: 20px; text-align: center; border-radius: 10px; text-decoration: none;">科目管理</a>
 </div>
 
 <%@ include file="/common/footer.jsp" %>
