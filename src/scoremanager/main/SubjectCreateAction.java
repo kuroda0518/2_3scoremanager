@@ -53,7 +53,7 @@ public class SubjectCreateAction extends Action {
             } catch (Exception e) {
                 e.printStackTrace();
                 request.setAttribute("message", "エラーが発生しました。");
-                return "subject_create_result.jsp";
+                return "subject_create_done.jsp";
             }
         }
 
@@ -74,7 +74,7 @@ public class SubjectCreateAction extends Action {
             } catch (Exception e) {
                 e.printStackTrace();
                 request.setAttribute("message", "エラーが発生しました。");
-                return "subject_create_result.jsp";
+                return "subject_create_done.jsp";
             }
         }
 
@@ -93,12 +93,12 @@ public class SubjectCreateAction extends Action {
             dao.insert(subject);
 
             request.setAttribute("message", "科目を登録しました。");
-            return "subject_create_result.jsp";
+            return "subject_create_done.jsp";
 
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("message", "登録中にエラーが発生しました。");
-            return "subject_create_result.jsp";
+            return "subject_create_done.jsp";
         }
     }
 }
