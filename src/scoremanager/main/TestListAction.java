@@ -10,6 +10,7 @@ import bean.Student;
 import bean.Teacher;
 import dao.ClassNumDao;
 import dao.StudentDao;
+import dao.SubjectDao;
 import tool.Action;
 
 public class TestListAction extends Action {
@@ -45,6 +46,11 @@ public class TestListAction extends Action {
             entYearList.add(i);
         }
         request.setAttribute("entYearList", entYearList);
+
+        // 科目リスト取得
+        SubjectDao subjectDao = new SubjectDao();
+        List<String> subjectList =new ArrayList<>();
+        request.setAttribute("subjectList", subjectList);
 
         // クラス番号リスト
         ClassNumDao classNumDao = new ClassNumDao();

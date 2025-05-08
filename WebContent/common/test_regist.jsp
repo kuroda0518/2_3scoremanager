@@ -7,13 +7,6 @@
 
 <div style="margin-left:200px; padding:20px;">
     <h2>成績管理</h2>
-<div style="text-align: right; margin-bottom: 10px;">
-        <a href="${pageContext.request.contextPath}/TestCreate.action" style="background-color: #3182ce; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">
-            新規登録
-        </a>
-    </div>
-
-
     <!-- 検索フォーム -->
 <style>
   .filter-form {
@@ -69,12 +62,21 @@
         </c:forEach>
     </select>
 
-    <label>
-        <input type="checkbox" name="isAttend" value="true"
-            <c:if test="${param.isAttend == 'true'}">checked</c:if>>在学中
-    </label>
-
-    <button type="submit">絞り込み</button>
+        <label>科目：</label>
+    <select name="subject">
+        <option value="">------</option>
+        <c:forEach var="sub" items="${subjectList}">
+            <option value="${sub}" <c:if test="${param.subject == sub}">selected</c:if>>${cls}</option>
+        </c:forEach>
+    </select>
+    <label>回数：</label>
+    <select name="no">
+        <option value="">------</option>
+        <c:forEach var="no" items="${classNumList}">
+            <option value="${no}" <c:if test="${param.classNum == no}">selected</c:if>>${cls}</option>
+        </c:forEach>
+    </select>
+    <button type="submit">検索</button>
 </form>
 
 
@@ -83,29 +85,20 @@
         <c:when test="${not empty studentList}">
             <table border="1" cellpadding="5" cellspacing="0" style="width:100%; text-align:center;">
                 <tr>
+                <div>科目名="$[subject]"
+                    <th>入学年度</th>
+                    <th>クラス</th>
                     <th>学生番号</th>
-                    <th>科目番号</th>
-                    <th>学校番号</th>
-                    <th>在学中</th>
-                    <th>操作</th>
+                    <th>氏名</th>
+                    <th>点数</th>
                 </tr>
-                <c:forEach var="tes" items="${testList}">
+                <c:forEach var="tes" items="${studentList}">
                     <tr>
                         <td>${tes.entYear}</td>
                         <td>${tes.no}</td>
                         <td>${tes.name}</td>
                         <td>${tes.classNum}</td>
-                        <td>
-                            <c:choose>
-                                <c:when test="${tes.isAttend}">
-                                    ○
-                                </c:when>
-                                <c:otherwise>
-                                    -
-                                </c:otherwise>
-                            </c:choose>
-                        </td>
-						<td><a href="${pageContext.request.contextPath}/StudentUpdate.action?no=${stu.no}">変更</a></td>
+                        <td>$[tes.point]</td>
                     </tr>
                 </c:forEach>
             </table>
