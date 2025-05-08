@@ -8,11 +8,10 @@
     <h2>科目情報登録</h2>
 
     <div style="background-color: #d4edda; color: #155724; padding: 12px; border-radius: 6px; margin-bottom: 16px;">
-        変更が完了しました
+        削除が完了しました
     </div>
 
     <div style="margin-top: 20px;">
-        <a href="${pageContext.request.contextPath}/subject_create.jsp" style="margin-right: 20px;">戻る</a>
         <a href="${pageContext.request.contextPath}/SubjectList.action">科目一覧</a>
     </div>
 </div>

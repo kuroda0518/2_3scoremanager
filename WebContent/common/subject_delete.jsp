@@ -10,11 +10,11 @@
     <h2>科目情報削除</h2>
 
     <!-- ② 確認メッセージ -->
-    <p>「${subject.name}(${subject.code})」を削除してもよろしいですか？</p>
+    <p>「${subject.name}(${subject.cd})」を削除してもよろしいですか？</p>
 
-    <form action="<%= request.getContextPath() %>/SubjectDelete.action" method="post" style="margin-top: 20px;">
+    <form action="<%= request.getContextPath() %>/SubjectDeleteExecute.action" method="post" style="margin-top: 20px;">
         <!-- 削除対象のコードをhiddenで送る -->
-        <input type="hidden" name="subjectCode" value="${subject.code}" />
+        <input type="hidden" name="subcd" value="${subject.cd}" />
 
         <!-- ③ 削除ボタン -->
         <button type="submit" style="background-color: #e53e3e; color: white; border: none; padding: 8px 16px; border-radius: 4px;">

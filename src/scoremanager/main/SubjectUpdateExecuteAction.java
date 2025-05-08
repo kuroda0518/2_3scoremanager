@@ -35,6 +35,6 @@ public class SubjectUpdateExecuteAction extends Action {
         SubjectDao dao = new SubjectDao();
         dao.update(subject);
 
-        return "subject_update_result.jsp";
+        return "subject_update_done.jsp";
     }
 }

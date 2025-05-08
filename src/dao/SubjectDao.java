@@ -99,5 +99,23 @@ public class SubjectDao extends Dao{
         return subname;
     }
 
+    public int delete(Subject subject) throws Exception{
+		//DBとの接続
+		Connection con = getConnection();
+
+		//SQL文の準備
+		PreparedStatement st = con.prepareStatement("DELETE FROM SUBJECT WHERE CD=? ");
+		st.setString(1,subject.getCd());
+
+		int num = st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return num;
+
+
+	}
+
 }
 
