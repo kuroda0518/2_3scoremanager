@@ -13,7 +13,7 @@ import dao.StudentDao;
 import dao.SubjectDao;
 import tool.Action;
 
-public class TestListAction extends Action {
+public class TestRegistAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // フォームからの入力取得
         String entYearStr = request.getParameter("entYear");
