@@ -126,35 +126,6 @@
     </select>
     <button type="submit">検索</button>
 </form>
-
-
-    <!-- 学生リスト -->
-    <c:choose>
-        <c:when test="${not empty studentList}">
-            <table border="1" cellpadding="5" cellspacing="0" style="width:100%; text-align:center;">
-                <tr>
-                <div>科目名="$[subject]"
-                    <th>入学年度</th>
-                    <th>クラス</th>
-                    <th>学生番号</th>
-                    <th>氏名</th>
-                    <th>点数</th>
-                </tr>
-                <c:forEach var="tes" items="${studentList}">
-                    <tr>
-                        <td>${tes.entYear}</td>
-                        <td>${tes.no}</td>
-                        <td>${tes.name}</td>
-                        <td>${tes.classNum}</td>
-                        <td>$[tes.point]</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </c:when>
-        <c:otherwise>
-            <p style="color:red;">成績情報が存在しませんでした。</p>
-        </c:otherwise>
-    </c:choose>
 </div>
 
 <jsp:include page="/common/footer.jsp" />
