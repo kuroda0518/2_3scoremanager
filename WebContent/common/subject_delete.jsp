@@ -12,7 +12,7 @@
     <!-- ② 確認メッセージ -->
     <p>「${subject.name}(${subject.cd})」を削除してもよろしいですか？</p>
 
-    <form action="<%= request.getContextPath() %>/SubjectDelete.action" method="post" style="margin-top: 20px;">
+    <form action="<%= request.getContextPath() %>/SubjectDeleteExecute.action" method="post" style="margin-top: 20px;">
         <!-- 削除対象のコードをhiddenで送る -->
         <input type="hidden" name="subcd" value="${subject.cd}" />
 
