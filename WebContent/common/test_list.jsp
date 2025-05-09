@@ -46,6 +46,7 @@
 </style>
 
 <form action="<%= request.getContextPath() %>/TestList.action" method="get" class="filter-form">
+ 	<label>科目情報</label>
     <label>入学年度：</label>
     <select name="entYear">
         <option value="">------</option>
@@ -74,6 +75,15 @@
         <option value="">------</option>
         <c:forEach var="no" items="${classNumList}">
             <option value="${no}" <c:if test="${param.classNum == no}">selected</c:if>>${cls}</option>
+        </c:forEach>
+    </select>
+    <button type="submit">検索</button><br>
+	<label>学生情報</labe>
+    <label>学生番号：</label>
+    <select name="stu">
+        <option value="">------</option>
+        <c:forEach var="stu" items="${studentList}">
+            <option value="${stu}" <c:if test="${param.student == stu}">selected</c:if>>${cls}</option>
         </c:forEach>
     </select>
     <button type="submit">検索</button>
