@@ -36,9 +36,7 @@
 </head>
 <body>
 
-<div id="header">
-    <div id="title">得点管理システム</div>
-</div>
+
 
 <div class="logout-box">
     <h2>ログアウト</h2>

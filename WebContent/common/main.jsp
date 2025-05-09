@@ -14,7 +14,7 @@
     <div style="background-color: #d4edda; padding: 20px; border-radius: 10px;">
         <div><a>成績管理</a></div>
         <div><a href="#" style="text-decoration: none;">成績登録</a></div>
-        <div><a href="#" style="text-decoration: none;">成績参照</a></div>
+        <div><a href="<%= request.getContextPath() %>/TestList.action" style="text-decoration: none;">成績参照</a></div>
     </div>
 
     <a href="../scoremanager/SubjectList.action" style="background-color: #d6d8fb; padding: 20px; text-align: center; border-radius: 10px; text-decoration: none;">科目管理</a>

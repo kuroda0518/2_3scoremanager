@@ -1,8 +1,11 @@
 package bean;
-
 public class User {
     private boolean isAuthenticated;
+	public boolean isAuthenticated(){;
+		return isAuthenticated;
+	}
+	public void setAuthenticated(boolean isAuthenticated){;
+		this.isAuthenticated= isAuthenticated;
+	}
 
-    public boolean getIsAuthenticated() { return isAuthenticated; }
-    public void setIsAuthenticated(boolean isAuthenticated) { this.isAuthenticated = isAuthenticated; }
 }
