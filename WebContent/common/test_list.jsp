@@ -16,7 +16,7 @@
     padding: 12px 16px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     margin-bottom: 20px;
   }
 
@@ -26,6 +26,7 @@
     padding: 6px 10px;
     font-size: 14px;
   }
+
 
   .filter-form select {
     border: 1px solid #ccc;
@@ -43,11 +44,46 @@
     font-weight: bold;
     font-size: 14px;
   }
+  .filter-form2 {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .filter-form2 select,
+  .filter-form2 input[type="checkbox"],
+  .filter-form2 button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+
+  .filter-form2 select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .filter-form2 button {
+    background-color: #4a5568;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .filter-form2 label {
+    font-weight: bold;
+    font-size: 14px;
+  }
 </style>
 
 <form action="<%= request.getContextPath() %>/TestList.action" method="get" class="filter-form">
- 	<label>科目情報</label>
-    <label>入学年度：</label>
+<label>科目情報  </label>
+	<label>入学年度：</label>
     <select name="entYear">
         <option value="">------</option>
         <c:forEach var="year" items="${entYearList}">
@@ -77,7 +113,9 @@
             <option value="${no}" <c:if test="${param.classNum == no}">selected</c:if>>${cls}</option>
         </c:forEach>
     </select>
-    <button type="submit">検索</button><br>
+    <button type="submit">検索</button>
+</form>
+<form action="<%= request.getContextPath() %>/TestList.action" method="get" class="filter-form2">
 	<label>学生情報</labe>
     <label>学生番号：</label>
     <select name="stu">
