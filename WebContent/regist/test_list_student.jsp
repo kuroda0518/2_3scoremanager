@@ -5,7 +5,7 @@
 
 <h2>成績一覧（科目）</h2>
 
-<form action="main/TestListStudent.action" method="get">
+<form action="${pageContext.request.contextPath}/TestListStudent.action" method="get">
     <label>入学年度</label>
     <input type="text" name="entYear" value="${param.entYear}" />
 
