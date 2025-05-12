@@ -6,7 +6,9 @@
 
 
 
-
+<div style="margin-left:200px; padding:20px;">
+    <h2>メニュー</h2>
+</div>
 <!-- 横並びの設定 -->
 <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
     <a href="../StudentList.action" style="background-color: #f8d7da; padding: 20px; text-align: center; border-radius: 10px; text-decoration: none;">学生管理</a>
