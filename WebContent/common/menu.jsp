@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <div style="width:150px; float:left; border-right:1px solid #ccc; height:100vh; padding:10px; box-sizing:border-box;">
     <h3>メニュー</h3>
     <ul style="list-style:none; padding:0;">
