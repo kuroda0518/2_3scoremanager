@@ -1,29 +1,28 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
     <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
         body {
-            font-family: sans-serif;
-            background-color: #ffffff;
-            text-align: center;
-            margin-top: 100px;
-            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .login-box {
-            display: inline-block;
-            padding: 0;
+            width: 500px;
+            padding: 20px;
             background-color: white;
             border: 1px solid #ccc;
             border-radius: 8px;
-            overflow: hidden;
-            width: 420px;
+            text-align: center;
         }
         .login-title {
             background-color: #f0f0f0;
@@ -39,7 +38,7 @@
         input[type="password"] {
             margin: 15px;
             padding: 12px;
-            width: 300px;
+            width: 400px;
             background-color: #e0f7ff;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -61,6 +60,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            width: 440px;
         }
         input[type="submit"]:hover {
             background-color: #0056b3;
@@ -68,43 +68,35 @@
     </style>
 </head>
 <body>
-<!-- <div style="background-color: #D7EEFF; color: white; padding: 10px;">
-    <h1>
-        <a href="http://localhost:8080/scoremanager/common/main.jsp" style="color: black; text-decoration: none;">
-            得点管理システム
-        </a>
-    </h1>
-</div>
--->
-<div class="login-box">
-    <h2 class="login-title">ログイン</h2>
+    <div class="login-box">
+        <h2 class="login-title">ログイン</h2>
 
-    <div class="login-content">
-        <c:if test="${not empty error}">
-            <div class="error-message">${error}</div>
-        </c:if>
+        <div class="login-content">
+<c:if test="${not empty error}">
+    <div class="error-message">${error}</div>
+</c:if>
 
-        <form action="Login.action" method="post">
-            <p><input type="text" name="id" placeholder="ID" required></p><br>
+            <form action="Login.action" method="post">
+                <p><input type="text" name="id" placeholder="ID" required></p><br>
 
-            <input type="password" name="password" id="password" placeholder="パスワード" required><br>
+                <input type="password" name="password" id="password" placeholder="パスワード" required><br>
 
-            <div class="show-password">
-                <input type="checkbox" id="showPassword" onclick="togglePassword()">
-                <label for="showPassword">パスワードを表示する</label>
-            </div><br>
+                <div class="show-password">
+                    <input type="checkbox" id="showPassword" onclick="togglePassword()">
+                    <label for="showPassword">パスワードを表示する</label>
+                </div><br>
 
-            <input type="submit" value="ログイン">
-        </form>
+                <input type="submit" value="ログイン">
+            </form>
+        </div>
     </div>
-</div>
 
-<script>
-    function togglePassword() {
-        const passwordInput = document.getElementById("password");
-        const checkbox = document.getElementById("showPassword");
-        passwordInput.type = checkbox.checked ? "text" : "password";
-    }
-</script>
-
-<%@ include file="/common/footer.jsp" %>
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const checkbox = document.getElementById("showPassword");
+            passwordInput.type = checkbox.checked ? "text" : "password";
+        }
+    </script>
+</body>
+</html>
