@@ -1,4 +1,4 @@
-package scoremanager.test;
+package scoremanager.main;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class TestListStudentAction extends Action {
         if (entYear == null || classNum == null || subjectIdStr == null ||
             entYear.isEmpty() || classNum.isEmpty() || subjectIdStr.isEmpty()) {
             req.setAttribute("error", "入学年度とクラスと科目を選択してください");
-            return "jsp/test_list_student.jsp";
+            return "/regist/test_list_student.jsp";
         }
 
         int subjectId = Integer.parseInt(subjectIdStr);
@@ -31,6 +31,6 @@ public class TestListStudentAction extends Action {
         }
 
         req.setAttribute("studentList", students);
-        return "jsp/test_list_student.jsp";
+        return "/regist/test_list_student.jsp";
     }
 }

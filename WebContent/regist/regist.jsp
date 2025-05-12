@@ -4,7 +4,7 @@
 <jsp:include page="menu.jsp" />
 
 <h2>成績管理</h2>
-<form action="main/TestRegistaction" method="post">
+<form action="${pageContext.request.contextPath}/TestRegist.action" method="post">
     <input type="hidden" name="subject" value="${subjectId}">
     <input type="hidden" name="test" value="${testId}">
 
