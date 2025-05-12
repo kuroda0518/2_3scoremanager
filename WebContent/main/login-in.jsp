@@ -68,7 +68,14 @@
     </style>
 </head>
 <body>
-
+<!-- <div style="background-color: #D7EEFF; color: white; padding: 10px;">
+    <h1>
+        <a href="http://localhost:8080/scoremanager/common/main.jsp" style="color: black; text-decoration: none;">
+            得点管理システム
+        </a>
+    </h1>
+</div>
+-->
 <div class="login-box">
     <h2 class="login-title">ログイン</h2>
 
