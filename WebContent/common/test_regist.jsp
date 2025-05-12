@@ -91,6 +91,7 @@
                     <th>学生番号</th>
                     <th>氏名</th>
                     <th>点数</th>
+                </div>
                 </tr>
                 <c:forEach var="tes" items="${studentList}">
                     <tr>
