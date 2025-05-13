@@ -8,4 +8,4 @@
 <a href="${pageContext.request.contextPath}/regist/regist.jsp">戻る</a>　
 <a href="${pageContext.request.contextPath}/main/StudentList.action">成績参照へ</a>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="/common/footer.jsp" %>

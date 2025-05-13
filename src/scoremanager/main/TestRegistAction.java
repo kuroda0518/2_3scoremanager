@@ -16,7 +16,7 @@ public class TestRegistAction extends Action {
 
         if (subjectStr == null || testStr == null || subjectStr.isEmpty() || testStr.isEmpty()) {
             req.setAttribute("error", "科目または回数が指定されていません。");
-            return "/regist/regist.jsp";
+            return "/common/regist.jsp";
         }
 
         int subjectId = Integer.parseInt(subjectStr);
@@ -32,7 +32,7 @@ public class TestRegistAction extends Action {
                 if (point < 0 || point > 100) throw new NumberFormatException();
             } catch (NumberFormatException e) {
                 req.setAttribute("error", "0～100の範囲で入力してください");
-                return "/regist/regist.jsp";
+                return "/common/regist.jsp";
             }
 
             Test test = new Test();
@@ -42,6 +42,6 @@ public class TestRegistAction extends Action {
             test.setPoint(point);
             dao.save(test);
         }
-        return "/regist/regist_done.jsp";
+        return "/common/regist_done.jsp";
     }
 }

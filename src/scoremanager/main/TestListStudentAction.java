@@ -58,7 +58,7 @@ public class TestListStudentAction extends Action {
         if (entYearStr == null || classNum == null || subjectIdStr == null ||
             entYearStr.isEmpty() || classNum.isEmpty() || subjectIdStr.isEmpty()) {
             req.setAttribute("error", "入学年度とクラスと科目を選択してください");
-            return "/regist/test_list_student.jsp";
+            return "/common/test_list_student.jsp";
         }
 
         // ▼▼ 画面用データ取得処理 ▼▼
@@ -70,7 +70,7 @@ public class TestListStudentAction extends Action {
 
         if (students.isEmpty()) {
             req.setAttribute("error", "学生情報が存在しませんでした");
-            return "/regist/test_list_student.jsp";
+            return "/common/test_list_student.jsp";
         }
 
         TestDao testDao = new TestDao();
@@ -85,7 +85,7 @@ public class TestListStudentAction extends Action {
         }
 
         req.setAttribute("studentList", result);
-        return "/regist/test_list_student.jsp";
+        return "/common/test_list_student.jsp";
     }
 }
 
