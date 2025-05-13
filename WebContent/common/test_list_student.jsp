@@ -23,7 +23,7 @@
         </c:forEach>
     </select>
 
-    <label>科目</label>
+    <label>科目ID</label>
     <select name="subject">
         <option value="">-- 選択 --</option>
         <c:forEach var="subj" items="${subjectList}">

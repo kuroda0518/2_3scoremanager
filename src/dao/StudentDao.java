@@ -122,6 +122,36 @@ public class StudentDao extends Dao {
         return rows;
     }
 
+ // 入学年度を重複なく取得
+    public List<String> findDistinctEntYears() throws Exception {
+        List<String> list = new ArrayList<>();
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("SELECT DISTINCT ent_year FROM student ORDER BY ent_year");
+        ResultSet rs = st.executeQuery();
+        while (rs.next()) {
+            list.add(rs.getString("ent_year"));
+        }
+        rs.close();
+        st.close();
+        con.close();
+        return list;
+    }
+
+    public List<String> findDistinctClassNums() throws Exception {
+        List<String> list = new ArrayList<>();
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("SELECT DISTINCT class_num FROM student ORDER BY class_num");
+        ResultSet rs = st.executeQuery();
+        while (rs.next()) {
+            list.add(rs.getString("class_num"));
+        }
+        rs.close();
+        st.close();
+        con.close();
+        return list;
+    }
+
+
 
 
 

@@ -10,63 +10,39 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Student;
 import dao.StudentDao;
+import dao.SubjectDao; // 追加
 import dao.TestDao;
 import tool.Action;
 
 public class TestListStudentAction extends Action {
     public String execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        // ▼▼ プルダウン用データを先に用意 ▼▼
+        // ▼▼ プルダウン用データをDBから取得 ▼▼
+        StudentDao studentDao = new StudentDao();
+        SubjectDao subjectDao = new SubjectDao();
 
-    	List<String> entYearList = new ArrayList<>();
-    	entYearList.add("2021");
-    	entYearList.add("2022");
-    	entYearList.add("2023");
-    	req.setAttribute("entYearList", entYearList);
+        List<String> entYearList = studentDao.findDistinctEntYears();
+        List<String> classNumList = studentDao.findDistinctClassNums();
+        List<Map<String, Object>> subjectList = subjectDao.findAll();
 
-    	List<String> classNumList = new ArrayList<>();
-    	classNumList.add("200");
-    	classNumList.add("201");
-    	classNumList.add("202");
-    	req.setAttribute("classNumList", classNumList);
-
-    	List<Map<String, Object>> subjectList = new ArrayList<>();
-    	Map<String, Object> subj1 = new HashMap<>();
-    	subj1.put("id", 1);
-    	subj1.put("name", "情報処理基礎");
-    	subjectList.add(subj1);
-
-    	Map<String, Object> subj2 = new HashMap<>();
-    	subj2.put("id", 2);
-    	subj2.put("name", "情報処理応用");
-    	subjectList.add(subj2);
-
-    	Map<String, Object> subj3 = new HashMap<>();
-    	subj3.put("id", 3);
-    	subj3.put("name", "ゲーム");
-    	subjectList.add(subj3);
-
-    	req.setAttribute("subjectList", subjectList);
-
-
+        req.setAttribute("entYearList", entYearList);
+        req.setAttribute("classNumList", classNumList);
+        req.setAttribute("subjectList", subjectList);
 
         // ▼▼ フォーム入力値取得 ▼▼
         String entYearStr = req.getParameter("entYear");
         String classNum = req.getParameter("classNum");
         String subjectIdStr = req.getParameter("subject");
 
-        // ▼▼ 初期表示・未入力エラー処理 ▼▼
         if (entYearStr == null || classNum == null || subjectIdStr == null ||
             entYearStr.isEmpty() || classNum.isEmpty() || subjectIdStr.isEmpty()) {
             req.setAttribute("error", "入学年度とクラスと科目を選択してください");
             return "/common/test_list_student.jsp";
         }
 
-        // ▼▼ 画面用データ取得処理 ▼▼
         int entYear = Integer.parseInt(entYearStr);
         int subjectId = Integer.parseInt(subjectIdStr);
 
-        StudentDao studentDao = new StudentDao();
-        List<Student> students = studentDao.filter("001", entYear, classNum, true); // schoolCd="001", isAttend=true
+        List<Student> students = studentDao.filter("001", entYear, classNum, true);
 
         if (students.isEmpty()) {
             req.setAttribute("error", "学生情報が存在しませんでした");
