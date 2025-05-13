@@ -23,6 +23,7 @@ public class TestRegistAction extends Action {
         int testId = Integer.parseInt(testStr);
 
         TestDao dao = new TestDao();
+
         for (int i = 0; i < studentNos.length; i++) {
             if (points[i] == null || points[i].trim().equals("")) continue;
 
@@ -42,6 +43,7 @@ public class TestRegistAction extends Action {
             test.setPoint(point);
             dao.save(test);
         }
+
         return "/common/regist_done.jsp";
     }
 }
