@@ -6,14 +6,30 @@
 <h2>成績一覧（科目）</h2>
 
 <form action="${pageContext.request.contextPath}/TestListStudent.action" method="get">
+
     <label>入学年度</label>
-    <input type="text" name="entYear" value="${param.entYear}" />
+    <select name="entYear">
+        <option value="">-- 選択 --</option>
+        <c:forEach var="year" items="${entYearList}">
+            <option value="${year}" <c:if test="${param.entYear == year}">selected</c:if>>${year}</option>
+        </c:forEach>
+    </select>
 
     <label>クラス</label>
-    <input type="text" name="classNum" value="${param.classNum}" />
+    <select name="classNum">
+        <option value="">-- 選択 --</option>
+        <c:forEach var="cls" items="${classNumList}">
+            <option value="${cls}" <c:if test="${param.classNum == cls}">selected</c:if>>${cls}</option>
+        </c:forEach>
+    </select>
 
-    <label>科目ID</label>
-    <input type="text" name="subject" value="${param.subject}" />
+    <label>科目</label>
+    <select name="subject">
+        <option value="">-- 選択 --</option>
+        <c:forEach var="subj" items="${subjectList}">
+            <option value="${subj.id}" <c:if test="${param.subject == subj.id}">selected</c:if>>${subj.name}</option>
+        </c:forEach>
+    </select>
 
     <input type="submit" value="検索" />
 </form>
@@ -29,18 +45,18 @@
             <th>入学年度</th><th>クラス</th><th>学籍番号</th><th>氏名</th>
             <th>1回の点数</th><th>2回の点数</th>
         </tr>
-        <c:forEach var="s" items="${studentList}">
+        <c:forEach var="row" items="${studentList}">
             <tr>
-                <td>${s.entYear}</td>
-                <td>${s.classNum}</td>
-                <td>${s.studentNo}</td>
-                <td>${s.studentName}</td>
+                <td>${row.student.entYear}</td>
+                <td>${row.student.classNum}</td>
+                <td>${row.student.no}</td>
+                <td>${row.student.name}</td>
                 <td><c:choose>
-                    <c:when test="${s.firstScore != null}">${s.firstScore}</c:when>
+                    <c:when test="${row.point1 != null}">${row.point1}</c:when>
                     <c:otherwise>-</c:otherwise>
                 </c:choose></td>
                 <td><c:choose>
-                    <c:when test="${s.secondScore != null}">${s.secondScore}</c:when>
+                    <c:when test="${row.point2 != null}">${row.point2}</c:when>
                     <c:otherwise>-</c:otherwise>
                 </c:choose></td>
             </tr>

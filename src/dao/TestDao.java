@@ -52,4 +52,9 @@ public class TestDao extends Dao {
         con.close();
         return result > 0;
     }
+
+	public Object findPoint(String no, int subjectId, int i) {
+		// TODO 自動生成されたメソッド・スタブ
+		return findPoint(null, 0, 0);
+	}
 }

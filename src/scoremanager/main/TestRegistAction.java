@@ -42,6 +42,6 @@ public class TestRegistAction extends Action {
             test.setPoint(point);
             dao.save(test);
         }
-        return "/regist/registdone.jsp";
+        return "/regist/regist_done.jsp";
     }
 }
