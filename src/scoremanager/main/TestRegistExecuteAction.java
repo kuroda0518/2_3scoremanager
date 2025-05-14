@@ -1,6 +1,5 @@
 package scoremanager.main;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Subject;
 import bean.Teacher;
 import bean.Test;
+import dao.StudentDao;
 import dao.SubjectDao;
 import dao.TestDao;
 import tool.Action;
@@ -27,15 +27,17 @@ public class TestRegistExecuteAction extends Action {
 
         SubjectDao subjectDao = new SubjectDao();
         TestDao testDao = new TestDao();
+        StudentDao studentDao = new StudentDao();
 
         List<Test> studentList = testDao.filter(schoolCd, entYear, classNum, subjectCd, no);
         List<Subject> subjectList = subjectDao.filter(schoolCd);
-        List<Integer> entYearList = Arrays.asList(2023, 2024, 2025); // 適宜変更
+        List<Integer> entYearList = studentDao.getEntYearList(schoolCd);
+        List<String> classNumList = studentDao.getClassNumList(schoolCd);
 
         request.setAttribute("studentList", studentList);
         request.setAttribute("subjectList", subjectList);
         request.setAttribute("entYearList", entYearList);
-        request.setAttribute("classNumList", Arrays.asList("101", "102", "201", "202"));
+        request.setAttribute("classNumList",classNum);
 
         request.setAttribute("entYear", entYear);
         request.setAttribute("classNum", classNum);
