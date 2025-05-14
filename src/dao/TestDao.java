@@ -45,6 +45,7 @@ public class TestDao extends Dao {
 
         return list;
     }
+
     public void updateOrDelete(Test test) throws Exception {
         try (Connection con = getConnection()) {
             if (test.getPoint() >= 0) {
@@ -73,5 +74,12 @@ public class TestDao extends Dao {
         }
     }
 
+
+
+
+	public Object findPoint(String no, int subjectId, int i) {
+		// TODO 自動生成されたメソッド・スタブ
+		return findPoint(null, 0, 0);
+	}
 
 }

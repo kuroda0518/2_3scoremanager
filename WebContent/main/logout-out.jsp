@@ -44,5 +44,5 @@
 
 <p class="logout-message">ログアウトしました。</p>
 
-<a href="/main/login-in.jsp">ログイン</a>
+<a href="/scoremanager/main/login-in.jsp">ログイン</a>
 <jsp:include page="/common/footer.jsp" />

@@ -7,28 +7,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Subject;
 import bean.Teacher;
-import dao.ClassNumDao;
+import dao.StudentDao;
 import dao.SubjectDao;
 import tool.Action;
 
 public class TestRegistAction extends Action {
-    @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setCharacterEncoding("UTF-8");
 
-        // ログイン中の教員から学校コードを取得
+        // ログインユーザーから学校コード取得
         Teacher teacher = (Teacher) request.getSession().getAttribute("loginUser");
         String schoolCd = teacher.getSchoolCd();
 
-        // クラス一覧と科目一覧を取得
-        ClassNumDao classDao = new ClassNumDao();
+        // セレクトボックス用データ取得
+        StudentDao studentDao = new StudentDao();
         SubjectDao subjectDao = new SubjectDao();
 
-        List<String> classNumList = classDao.filterClassNumOnly(schoolCd); // クラス番号のみのリストを想定
+        List<Integer> entYearList = studentDao.getEntYearList(schoolCd);
+        List<String> classNumList = studentDao.getClassNumList(schoolCd);
         List<Subject> subjectList = subjectDao.filter(schoolCd);
 
-        // セレクトボックス用に属性をセット（セッション or リクエスト）
-        request.setAttribute("entYearList", new int[] {2021, 2022, 2023, 2024, 2025});
+        // JSPに渡す
+        request.setAttribute("entYearList", entYearList);
         request.setAttribute("classNumList", classNumList);
         request.setAttribute("subjectList", subjectList);
 

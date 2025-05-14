@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import bean.Subject;
 
@@ -117,6 +119,7 @@ public class SubjectDao extends Dao{
 
 	}
 
+
     public List<Subject> filter(String schoolCd) throws Exception {
         List<Subject> list = new ArrayList<>();
 
@@ -140,6 +143,24 @@ public class SubjectDao extends Dao{
 
         return list;
     }
+
+    public List<Map<String, Object>> findAll() throws Exception {
+        List<Map<String, Object>> list = new ArrayList<>();
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("SELECT id, name FROM subject ORDER BY id");
+        ResultSet rs = st.executeQuery();
+        while (rs.next()) {
+            Map<String, Object> subj = new HashMap<>();
+            subj.put("id", rs.getInt("id"));
+            subj.put("name", rs.getString("name"));
+            list.add(subj);
+        }
+        rs.close();
+        st.close();
+        con.close();
+        return list;
+    }
+
 
 }
 
