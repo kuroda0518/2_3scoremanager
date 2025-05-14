@@ -1,47 +1,37 @@
 package scoremanager.main;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Test;
-import dao.TestDao;
+import bean.Subject;
+import bean.Teacher;
+import dao.ClassNumDao;
+import dao.SubjectDao;
 import tool.Action;
 
 public class TestRegistAction extends Action {
-    public String execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        String[] studentNos = req.getParameterValues("studentNo");
-        String[] points = req.getParameterValues("point");
-        String subjectStr = req.getParameter("subject");
-        String testStr = req.getParameter("test");
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setCharacterEncoding("UTF-8");
 
-        if (subjectStr == null || testStr == null || subjectStr.isEmpty() || testStr.isEmpty()) {
-            req.setAttribute("error", "科目または回数が指定されていません。");
-            return "/regist/regist.jsp";
-        }
+        // ログイン中の教員から学校コードを取得
+        Teacher teacher = (Teacher) request.getSession().getAttribute("loginUser");
+        String schoolCd = teacher.getSchoolCd();
 
-        int subjectId = Integer.parseInt(subjectStr);
-        int testId = Integer.parseInt(testStr);
+        // クラス一覧と科目一覧を取得
+        ClassNumDao classDao = new ClassNumDao();
+        SubjectDao subjectDao = new SubjectDao();
 
-        TestDao dao = new TestDao();
-        for (int i = 0; i < studentNos.length; i++) {
-            if (points[i] == null || points[i].trim().equals("")) continue;
+        List<String> classNumList = classDao.filterClassNumOnly(schoolCd); // クラス番号のみのリストを想定
+        List<Subject> subjectList = subjectDao.filter(schoolCd);
 
-            int point;
-            try {
-                point = Integer.parseInt(points[i].trim());
-                if (point < 0 || point > 100) throw new NumberFormatException();
-            } catch (NumberFormatException e) {
-                req.setAttribute("error", "0～100の範囲で入力してください");
-                return "/regist/regist.jsp";
-            }
+        // セレクトボックス用に属性をセット（セッション or リクエスト）
+        request.setAttribute("entYearList", new int[] {2021, 2022, 2023, 2024, 2025});
+        request.setAttribute("classNumList", classNumList);
+        request.setAttribute("subjectList", subjectList);
 
-            Test test = new Test();
-            test.setStudentNo(studentNos[i]);
-            test.setSubjectId(subjectId);
-            test.setTestId(testId);
-            test.setPoint(point);
-            dao.save(test);
-        }
-        return "/regist/registdone.jsp";
+        return "test_regist.jsp";
     }
 }

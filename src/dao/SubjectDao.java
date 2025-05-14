@@ -117,5 +117,29 @@ public class SubjectDao extends Dao{
 
 	}
 
+    public List<Subject> filter(String schoolCd) throws Exception {
+        List<Subject> list = new ArrayList<>();
+
+        try (Connection con = getConnection()) {
+            String sql = "SELECT * FROM SUBJECT WHERE school_cd = ? ORDER BY cd";
+
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, schoolCd);
+
+                ResultSet rs = st.executeQuery();
+                while (rs.next()) {
+                    Subject sub = new Subject();
+                    sub.setSchoolCd(rs.getString("school_cd"));
+                    sub.setCd(rs.getString("cd"));
+                    sub.setName(rs.getString("name"));
+
+                    list.add(sub);
+                }
+            }
+        }
+
+        return list;
+    }
+
 }
 
