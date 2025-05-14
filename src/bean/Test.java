@@ -1,20 +1,38 @@
 package bean;
 
-public class Test {
+import java.io.Serializable;
+
+public class Test implements Serializable {
     private String studentNo;
-    private int testId;
-    private int subjectId;
+    private String subjectCd;
+    private String schoolCd;
+    private int no; // 回数
     private int point;
+    private String classNum;
+    private int entYear;
+    private String name;
 
     public String getStudentNo() { return studentNo; }
     public void setStudentNo(String studentNo) { this.studentNo = studentNo; }
 
-    public int getTestId() { return testId; }
-    public void setTestId(int testId) { this.testId = testId; }
+    public String getSubjectCd() { return subjectCd; }
+    public void setSubjectCd(String subjectCd) { this.subjectCd = subjectCd; }
 
-    public int getSubjectId() { return subjectId; }
-    public void setSubjectId(int subjectId) { this.subjectId = subjectId; }
+    public String getSchoolCd() { return schoolCd; }
+    public void setSchoolCd(String schoolCd) { this.schoolCd = schoolCd; }
+
+    public int getNo() { return no; }
+    public void setNo(int no) { this.no = no; }
 
     public int getPoint() { return point; }
     public void setPoint(int point) { this.point = point; }
+
+    public String getClassNum() { return classNum; }
+    public void setClassNum(String classNum) { this.classNum = classNum; }
+
+    public int getEntYear() { return entYear; }
+    public void setEntYear(int entYear) { this.entYear = entYear; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }

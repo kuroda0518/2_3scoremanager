@@ -27,4 +27,20 @@ public class ClassNumDao extends Dao {
 
         return list;
     }
+
+    public List<String> filterClassNumOnly(String schoolCd) throws Exception {
+        List<String> list = new ArrayList<>();
+        try (Connection con = getConnection()) {
+            String sql = "SELECT class_num FROM CLASS_NUM WHERE school_cd = ? ORDER BY class_num";
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, schoolCd);
+                ResultSet rs = st.executeQuery();
+                while (rs.next()) {
+                    list.add(rs.getString("class_num"));
+                }
+            }
+        }
+        return list;
+    }
+
 }

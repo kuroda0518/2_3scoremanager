@@ -8,5 +8,5 @@
     text-align: center;
     padding: 10px;
     z-index: 999;">
-    <small>&copy; 2025 学生管理システム</small>
+    <small>&copy; 2025 大原学園</small>
 </div>
