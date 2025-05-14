@@ -18,8 +18,6 @@
 
         <div><a href="../TestRegist.action" style="text-decoration: none;">成績登録</a></div>
 
-        <div><a href="<%= request.getContextPath() %>/TestRegist.action" style="text-decoration: none;">成績登録</a></div>
-
         <div><a href="<%= request.getContextPath() %>/TestList.action" style="text-decoration: none;">成績参照</a></div>
     </div>
 
