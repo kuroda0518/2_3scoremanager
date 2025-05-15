@@ -7,7 +7,6 @@
 <div style="margin-left:200px; padding: 20px;">
 
         <h2>科目管理</h2>
-
         <div style="text-align: right; margin-bottom: 10px;">
         <a href="<%= request.getContextPath() %>/SubjectCreate.action">新規登録</a>
     </div>
