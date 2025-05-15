@@ -85,7 +85,7 @@
         <c:when test="${not empty studentList}">
             <table border="1" cellpadding="5" cellspacing="0" style="width:100%; text-align:center;">
                 <tr>
-                <div>科目名="$[subject]"
+                <div>科目名=sub+"("+no+")"
                     <th>入学年度</th>
                     <th>クラス</th>
                     <th>学生番号</th>
