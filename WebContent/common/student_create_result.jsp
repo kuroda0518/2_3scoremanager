@@ -12,7 +12,7 @@
     </div>
 
     <div style="margin-top: 20px;">
-        <a href="${pageContext.request.contextPath}/StudentRegister.action" style="margin-right: 20px;">戻る</a>
+        <a href="${pageContext.request.contextPath}/StudentCreate.action" style="margin-right: 20px;">戻る</a>
         <a href="${pageContext.request.contextPath}/StudentList.action">学生一覧</a>
     </div>
 </div>
