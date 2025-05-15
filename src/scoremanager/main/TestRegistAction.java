@@ -1,49 +1,37 @@
 package scoremanager.main;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Test;
-import dao.TestDao;
+import bean.Subject;
+import bean.Teacher;
+import dao.StudentDao;
+import dao.SubjectDao;
 import tool.Action;
 
 public class TestRegistAction extends Action {
-    public String execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        String[] studentNos = req.getParameterValues("studentNo");
-        String[] points = req.getParameterValues("point");
-        String subjectStr = req.getParameter("subject");
-        String testStr = req.getParameter("test");
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setCharacterEncoding("UTF-8");
 
-        if (subjectStr == null || testStr == null || subjectStr.isEmpty() || testStr.isEmpty()) {
-            req.setAttribute("error", "科目または回数が指定されていません。");
-            return "/common/regist.jsp";
-        }
+        // ログインユーザーから学校コード取得
+        Teacher teacher = (Teacher) request.getSession().getAttribute("loginUser");
+        String schoolCd = teacher.getSchoolCd();
 
-        int subjectId = Integer.parseInt(subjectStr);
-        int testId = Integer.parseInt(testStr);
+        // セレクトボックス用データ取得
+        StudentDao studentDao = new StudentDao();
+        SubjectDao subjectDao = new SubjectDao();
 
-        TestDao dao = new TestDao();
+        List<Integer> entYearList = studentDao.getEntYearList(schoolCd);
+        List<String> classNumList = studentDao.getClassNumList(schoolCd);
+        List<Subject> subjectList = subjectDao.filter(schoolCd);
 
-        for (int i = 0; i < studentNos.length; i++) {
-            if (points[i] == null || points[i].trim().equals("")) continue;
+        // JSPに渡す
+        request.setAttribute("entYearList", entYearList);
+        request.setAttribute("classNumList", classNumList);
+        request.setAttribute("subjectList", subjectList);
 
-            int point;
-            try {
-                point = Integer.parseInt(points[i].trim());
-                if (point < 0 || point > 100) throw new NumberFormatException();
-            } catch (NumberFormatException e) {
-                req.setAttribute("error", "0～100の範囲で入力してください");
-                return "/common/regist.jsp";
-            }
-
-            Test test = new Test();
-            test.setStudentNo(studentNos[i]);
-            test.setSubjectId(subjectId);
-            test.setTestId(testId);
-            test.setPoint(point);
-            dao.save(test);
-        }
-
-        return "/common/regist_done.jsp";
+        return "test_regist.jsp";
     }
 }

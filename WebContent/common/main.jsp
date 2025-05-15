@@ -15,7 +15,9 @@
 
     <div style="background-color: #d4edda; padding: 20px; border-radius: 10px;">
         <div><a>成績管理</a></div>
-        <div><a href="<%= request.getContextPath() %>/TestRegist.action" style="text-decoration: none;">成績登録</a></div>
+
+        <div><a href="../TestRegist.action" style="text-decoration: none;">成績登録</a></div>
+
         <div><a href="<%= request.getContextPath() %>/TestList.action" style="text-decoration: none;">成績参照</a></div>
     </div>
 
