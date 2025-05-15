@@ -99,4 +99,11 @@
             passwordInput.type = checkbox.checked ? "text" : "password";
         }
     </script>
+<<<<<<< HEAD
 <%@ include file="/common/footer.jsp" %>
+=======
+</body>
+</html>
+
+<jsp:include page="/common/footer.jsp" />
+>>>>>>> branch 'master' of https://github.com/kuroda0518/2_3scoremanager.git
