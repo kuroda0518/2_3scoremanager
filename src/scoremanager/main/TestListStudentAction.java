@@ -49,6 +49,12 @@ public class TestListStudentAction extends Action {
             return "/common/test_list_student.jsp";
         }
 
+        if (subjectList == null || subjectList.isEmpty()) {
+            req.setAttribute("error", "科目情報が存在しません");
+            return "/common/test_list_student.jsp";
+        }
+
+
         TestDao testDao = new TestDao();
         List<Map<String, Object>> result = new ArrayList<>();
 
