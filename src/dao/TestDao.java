@@ -77,9 +77,29 @@ public class TestDao extends Dao {
 
 
 
-	public Object findPoint(String no, int subjectId, int i) {
-		// TODO 自動生成されたメソッド・スタブ
-		return findPoint(null, 0, 0);
-	}
+    public Integer findPoint(String studentNo, int subjectId, int testNo) {
+        Integer point = null;
+
+        try (Connection con = getConnection()) {
+            String sql = "SELECT POINT FROM TEST WHERE STUDENT_NO = ? AND SUBJECT_CD = ? AND NO = ?";
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, studentNo);
+                st.setString(2, String.format("%03d", subjectId)); // subjectIdは"001"のような文字列
+                st.setInt(3, testNo);
+
+                ResultSet rs = st.executeQuery();
+                if (rs.next()) {
+                    point = rs.getInt("POINT");
+                    if (rs.wasNull()) point = null; // DB上がNULLだった場合
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // ログ出力
+        }
+
+        return point;
+    }
+
+
 
 }
