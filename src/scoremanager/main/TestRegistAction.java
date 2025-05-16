@@ -16,8 +16,12 @@ public class TestRegistAction extends Action {
         request.setCharacterEncoding("UTF-8");
 
         // ログインユーザーから学校コード取得
-        Teacher teacher = (Teacher) request.getSession().getAttribute("loginUser");
-        String schoolCd = teacher.getSchoolCd();
+        Teacher user = (Teacher) request.getSession().getAttribute("loginUser");
+        if (user == null) {
+            response.sendRedirect("Login.action");
+            return null;
+        }
+        String schoolCd = user.getSchoolCd();
 
         // セレクトボックス用データ取得
         StudentDao studentDao = new StudentDao();
