@@ -6,6 +6,6 @@
 <p>登録が完了しました</p>
 
 <a href="${pageContext.request.contextPath}/common/regist.jsp">戻る</a>　
-<a href="${pageContext.request.contextPath}/main/StudentList.action">成績参照へ</a>
+<a href="${pageContext.request.contextPath}/common/test_list.jsp">成績参照へ</a>
 
 <%@ include file="/common/footer.jsp" %>
