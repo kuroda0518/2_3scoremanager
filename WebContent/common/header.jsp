@@ -11,7 +11,7 @@
     <div style="text-align: right;">
         <c:choose>
             <c:when test="${not empty sessionScope.loginUser}">
-                ${sessionScope.loginUser.name} さん　
+                <span style="color: black;">${sessionScope.loginUser.name} さん</span>　
                 <a href="<%=request.getContextPath()%>/Logout.action" style="color: black;">ログアウト</a>
             </c:when>
             <c:otherwise>
