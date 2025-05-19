@@ -9,7 +9,7 @@
 
     <label>入学年度</label>
     <select name="entYear">
-        <option value="">-- 選択 --</option>
+        <option value="">-----</option>
         <c:forEach var="year" items="${entYearList}">
             <option value="${year}" <c:if test="${param.entYear == year}">selected</c:if>>${year}</option>
         </c:forEach>
@@ -17,7 +17,7 @@
 
     <label>クラス</label>
     <select name="classNum">
-        <option value="">-- 選択 --</option>
+        <option value="">-----</option>
         <c:forEach var="cls" items="${classNumList}">
             <option value="${cls}" <c:if test="${param.classNum == cls}">selected</c:if>>${cls}</option>
         </c:forEach>
@@ -25,7 +25,7 @@
 
     <label>科目ID</label>
 <select name="subject">
-  <option value="">-- 選択 --</option>
+  <option value="">-----</option>
   <c:forEach var="subj" items="${subjectList}">
     <option value="${subj['id']}"
       <c:if test="${param.subject == subj['id']}">selected</c:if>>
