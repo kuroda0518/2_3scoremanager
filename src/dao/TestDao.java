@@ -100,6 +100,40 @@ public class TestDao extends Dao {
         return point;
     }
 
+    public List<Test> findByStudentNo(String studentNo) throws Exception {
+        List<Test> list = new ArrayList<>();
+
+        try (Connection con = getConnection()) {
+            String sql =
+                "SELECT t.student_no, t.subject_cd, s.name AS subject_name, t.no, t.point " +
+                "FROM TEST t " +
+                "JOIN SUBJECT s ON t.subject_cd = s.cd " +
+                "WHERE t.student_no = ? " +
+                "ORDER BY t.no";
+
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, studentNo);
+                System.out.println("実行されるSQL: " + st.toString()); // ★ログ出力
+
+                ResultSet rs = st.executeQuery();
+
+                while (rs.next()) {
+                    Test test = new Test();
+                    test.setStudentNo(rs.getString("student_no"));
+                    test.setSubjectCd(rs.getString("subject_cd"));
+                    test.setName(rs.getString("subject_name"));
+                    test.setNo(rs.getInt("no"));
+                    test.setPoint(rs.getInt("point"));
+                    list.add(test);
+                }
+            }
+        }
+
+
+        return list;
+    }
+
+
 
 
 }
