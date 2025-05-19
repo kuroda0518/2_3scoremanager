@@ -32,6 +32,6 @@ public class TestRegistAction extends Action {
         request.setAttribute("classNumList", classNumList);
         request.setAttribute("subjectList", subjectList);
 
-        return "test_regist.jsp";
+        return "regist_done";
     }
 }
