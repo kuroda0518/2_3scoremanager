@@ -82,7 +82,6 @@
 </style>
 
 <form action="<%= request.getContextPath() %>/TestList.action" method="get" class="filter-form">
-<label>科目情報  </label>
 	<label>入学年度：</label>
     <select name="entYear">
         <option value="">------</option>
