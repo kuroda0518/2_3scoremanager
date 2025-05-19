@@ -120,7 +120,7 @@
     </form>
 
     <!-- 成績一覧 -->
-    <h2>成績一覧（科目）</h2>
+    <h2>成績一覧（学生）</h2>
     <c:if test="${not empty testList}">
         <table border="1" style="width:100%; text-align:center;">
             <thead>
