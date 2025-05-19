@@ -59,6 +59,7 @@ public class SubjectDao extends Dao{
     }
 
     //選択したcdと一致したデータを取得
+    //これはなぜかエラー出たりするので、selectBySchoolを主に使う
     public Subject cdSelect(String cd) throws Exception {
         Connection con = getConnection();
 
@@ -83,7 +84,7 @@ public class SubjectDao extends Dao{
         return subject;
     }
 
-    //更新
+    //科目更新用
     public int update(Subject subject) throws Exception {
         Connection con = getConnection();
 
@@ -101,6 +102,7 @@ public class SubjectDao extends Dao{
         return subname;
     }
 
+    //科目削除用
     public int delete(Subject subject) throws Exception{
 		//DBとの接続
 		Connection con = getConnection();
@@ -120,6 +122,7 @@ public class SubjectDao extends Dao{
 	}
 
 
+    //ログインユーザーの学校コードから科目全件を取得
     public List<Subject> filter(String schoolCd) throws Exception {
         List<Subject> list = new ArrayList<>();
 
@@ -165,5 +168,26 @@ public class SubjectDao extends Dao{
         return list;
     }
 
+  //学校コードと科目コードから科目コードと科目名を取得
+    public Subject findOne(String schoolCd, String cd) throws Exception {
+        Subject subject = null;
+
+        try (Connection con = getConnection()) {
+            String sql = "SELECT * FROM subject WHERE school_cd = ? AND cd = ?";
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, schoolCd);
+                st.setString(2, cd);
+                ResultSet rs = st.executeQuery();
+
+                if (rs.next()) {
+                	subject = new Subject();
+                	subject.setCd(rs.getString("cd"));
+                	subject.setName(rs.getString("name"));
+                }
+            }
+        }
+
+        return subject;
+    }
 
 }

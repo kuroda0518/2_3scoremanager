@@ -227,7 +227,6 @@ public class StudentDao extends Dao {
         return student;
     }
 
-   //入学年度と
 
 
 }

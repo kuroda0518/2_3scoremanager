@@ -119,31 +119,35 @@
         <button type="submit">検索</button>
     </form>
 
-    <!-- 成績一覧 -->
-    <h2>成績一覧（学生）</h2>
-    <c:if test="${not empty testList}">
-        <table border="1" style="width:100%; text-align:center;">
-            <thead>
-                <tr>
-                    <th>科目コード</th>
-                    <th>科目名</th>
-                    <th>回数</th>
-                    <th>点数</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="test" items="${testList}">
-                    <tr>
-                        <td>${test.subjectCd}</td>
-                        <td>${test.name}</td>
-                        <td>${test.no}</td>
-                        <td>${test.point}</td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </c:if>
+  <h2>成績一覧（学生）</h2>
+  <c:if test="${not empty student}">
+    <p>氏名：${student.name}（${student.no}）</p>
+  </c:if>
+  <c:if test="${not empty testList}">
+    <table border="1" style="width:100%; text-align:center;">
+      <thead>
+        <tr>
+          <th>科目コード</th>
+          <th>科目名</th>
+          <th>回数</th>
+          <th>点数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <c:forEach var="test" items="${testList}">
+          <tr>
+            <td>${test.subjectCd}</td>
+            <td>${test.name}</td>
+            <td>${test.no}</td>
+            <td>${test.point}</td>
+          </tr>
+        </c:forEach>
+      </tbody>
+    </table>
+  </c:if>
+  <c:if test="${empty testList && not empty error}">
+    <p style="color:red;">${error}</p>
+  </c:if>
 </div>
 
 <jsp:include page="/common/footer.jsp" />
-

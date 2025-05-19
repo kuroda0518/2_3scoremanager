@@ -42,6 +42,10 @@ public class TestListSubjectExecuteAction extends Action {
         String classNum = request.getParameter("classNum");
         String subjectCd = request.getParameter("subject");
 
+      //表の上に科目名表示
+        Subject subject = subjectDao.findOne(schoolCd, subjectCd);
+        request.setAttribute("subject", subject);
+
         // 入力値チェック
         if (entYearStr == null || entYearStr.isEmpty() ||
             classNum == null || classNum.isEmpty() ||

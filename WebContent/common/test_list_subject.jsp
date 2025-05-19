@@ -121,7 +121,9 @@
 
     <!-- 成績一覧 -->
 	<h2>成績一覧（科目別）</h2>
-
+	<c:if test="${not empty subject}">
+	   <p>科目：${subject.name}</p>
+	</c:if>
 	<c:if test="${not empty testDisplayList}">
 	  <table border="1" style="width:100%; text-align:center; margin-top:20px;">
 	    <tr>
