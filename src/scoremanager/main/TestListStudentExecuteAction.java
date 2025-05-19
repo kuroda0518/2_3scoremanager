@@ -40,12 +40,6 @@ public class TestListStudentExecuteAction extends Action {
         // 学生番号を取得
         String studentNo = request.getParameter("stu");
 
-        // 学生番号が未入力の場合 → 「入力してください」エラーメッセージを設定
-        if (studentNo == null || studentNo.isEmpty()) {
-            request.setAttribute("error", "学生番号を入力してください");
-            return "/common/test_list.jsp"; // 画像に合わせて遷移先を修正する可能性あり
-        }
-
         // 学生情報取得（氏名のため）
         Student student = studentDao.findOne(schoolCd, studentNo);
 

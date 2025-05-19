@@ -90,7 +90,8 @@
     <form action="<%= request.getContextPath() %>/TestListStudentExecute.action" method="get" class="filter-form">
         <label>学生情報</label>
         <label>学生番号：</label>
-        <input type="text" name="stu" value="${param.stu}" placeholder="学生番号を入力してください" />
+        <input type="text" name="stu" value="${param.stu}" placeholder="学生番号を入力してください" required />
+
         <button type="submit">検索</button>
     </form>
 
