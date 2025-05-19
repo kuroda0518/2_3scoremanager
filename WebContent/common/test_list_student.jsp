@@ -46,7 +46,7 @@
     <table border="1">
         <tr>
             <th>入学年度</th><th>クラス</th><th>学籍番号</th><th>氏名</th>
-            <th>1回の点数</th><th>2回の点数</th>
+            <th>1回</th><th>2回</th>
         </tr>
         <c:forEach var="row" items="${studentList}">
             <tr>
