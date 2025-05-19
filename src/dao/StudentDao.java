@@ -186,6 +186,8 @@ public class StudentDao extends Dao {
         return list;
     }
 
+    //学生別でデータベースから持ってこようと思ったけどtextタイプでよさそうだから
+    //これいらないかも
     public List<Integer> getNoList(String schoolCd) throws Exception {
         List<Integer> list = new ArrayList<>();
         String sql = "SELECT DISTINCT No FROM STUDENT WHERE SCHOOL_CD = ? ORDER BY No";
@@ -203,6 +205,7 @@ public class StudentDao extends Dao {
         return list;
     }
 
+    //学校コードと学生番号から学生番号と名前を取得
     public Student findOne(String schoolCd, String studentNo) throws Exception {
         Student student = null;
 
@@ -217,13 +220,14 @@ public class StudentDao extends Dao {
                     student = new Student();
                     student.setNo(rs.getString("no"));
                     student.setName(rs.getString("name"));
-                    // 他にも必要に応じてセット
                 }
             }
         }
 
         return student;
     }
+
+   //入学年度と
 
 
 }

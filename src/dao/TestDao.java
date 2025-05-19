@@ -100,6 +100,7 @@ public class TestDao extends Dao {
         return point;
     }
 
+    //学生別で使用する
     public List<Test> findByStudentNo(String studentNo) throws Exception {
         List<Test> list = new ArrayList<>();
 
@@ -129,6 +130,42 @@ public class TestDao extends Dao {
             }
         }
 
+
+        return list;
+    }
+
+    //科目別で使用する
+    public List<Test> getClassAndSubject(int entYear, String classNum, String subjectCd) throws Exception {
+        List<Test> list = new ArrayList<>();
+
+        String sql = "SELECT " +
+                     "s.ent_year, s.class_num, s.no AS student_no, s.name AS student_name, " +
+                     "t.no AS test_no, t.point " +
+                     "FROM STUDENT s " +
+                     "LEFT JOIN TEST t ON s.no = t.student_no AND t.subject_cd = ? " +
+                     "WHERE s.ent_year = ? AND s.class_num = ? " +
+                     "ORDER BY s.no, t.no";
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, subjectCd);
+            ps.setInt(2, entYear);
+            ps.setString(3, classNum);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Test t = new Test();
+                t.setEntYear(rs.getInt("ent_year"));
+                t.setClassNum(rs.getString("class_num"));
+                t.setStudentNo(rs.getString("student_no"));
+                t.setName(rs.getString("student_name"));
+                t.setNo(rs.getInt("test_no"));
+                t.setPoint(rs.getInt("point"));
+                list.add(t);
+            }
+        }
 
         return list;
     }
