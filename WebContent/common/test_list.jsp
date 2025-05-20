@@ -96,6 +96,7 @@
     </form>
 
     <c:if test="${not empty error}">
+    <p>氏名：${student.name}（${student.no}）</p>
         <p class="error-message">${error}</p>
     </c:if>
 

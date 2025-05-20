@@ -127,8 +127,8 @@
     <table border="1" style="width:100%; text-align:center;">
       <thead>
         <tr>
+        <th>科目名</th>
           <th>科目コード</th>
-          <th>科目名</th>
           <th>回数</th>
           <th>点数</th>
         </tr>
@@ -136,8 +136,8 @@
       <tbody>
         <c:forEach var="test" items="${testList}">
           <tr>
-            <td>${test.subjectCd}</td>
             <td>${test.name}</td>
+            <td>${test.subjectCd}</td>
             <td>${test.no}</td>
             <td>${test.point}</td>
           </tr>
