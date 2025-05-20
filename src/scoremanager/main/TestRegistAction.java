@@ -34,4 +34,8 @@ public class TestRegistAction extends Action {
 
         return "regist_done";
     }
+
 }
+
+
+

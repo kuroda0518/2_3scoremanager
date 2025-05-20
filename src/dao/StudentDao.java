@@ -186,6 +186,47 @@ public class StudentDao extends Dao {
         return list;
     }
 
+    //学生別でデータベースから持ってこようと思ったけどtextタイプでよさそうだから
+    //これいらないかも
+    public List<Integer> getNoList(String schoolCd) throws Exception {
+        List<Integer> list = new ArrayList<>();
+        String sql = "SELECT DISTINCT No FROM STUDENT WHERE SCHOOL_CD = ? ORDER BY No";
+
+        try (Connection con = getConnection();
+             PreparedStatement st = con.prepareStatement(sql)) {
+
+            st.setString(1, schoolCd);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                list.add(rs.getInt("No"));
+            }
+        }
+        return list;
+    }
+
+    //学校コードと学生番号から学生番号と名前を取得
+    public Student findOne(String schoolCd, String studentNo) throws Exception {
+        Student student = null;
+
+        try (Connection con = getConnection()) {
+            String sql = "SELECT * FROM student WHERE school_cd = ? AND no = ?";
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.setString(1, schoolCd);
+                st.setString(2, studentNo);
+                ResultSet rs = st.executeQuery();
+
+                if (rs.next()) {
+                    student = new Student();
+                    student.setNo(rs.getString("no"));
+                    student.setName(rs.getString("name"));
+                }
+            }
+        }
+
+        return student;
+    }
+
 
 
 }

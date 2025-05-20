@@ -12,7 +12,7 @@
     </div>
 
     <div style="margin-top: 20px;">
-        <a href="${pageContext.request.contextPath}/subject_create.jsp" style="margin-right: 20px;">戻る</a>
+        <a href="${pageContext.request.contextPath}/common/subject_create.jsp" style="margin-right: 20px;">戻る</a>
         <a href="${pageContext.request.contextPath}/SubjectList.action">科目一覧</a>
     </div>
 </div>

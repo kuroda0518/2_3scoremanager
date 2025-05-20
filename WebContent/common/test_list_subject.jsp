@@ -16,50 +16,18 @@
     margin-bottom: 20px;
   }
 
-<<<<<<< HEAD
-    <label>入学年度</label>
-    <select name="entYear">
-        <option value="">-----</option>
-        <c:forEach var="year" items="${entYearList}">
-            <option value="${year}" <c:if test="${param.entYear == year}">selected</c:if>>${year}</option>
-        </c:forEach>
-    </select>
-=======
   .filter-form select,
   .filter-form input[type="checkbox"],
   .filter-form button {
     padding: 6px 10px;
     font-size: 14px;
   }
->>>>>>> branch 'master' of https://github.com/kuroda0518/2_3scoremanager.git
 
-<<<<<<< HEAD
-    <label>クラス</label>
-    <select name="classNum">
-        <option value="">-----</option>
-        <c:forEach var="cls" items="${classNumList}">
-            <option value="${cls}" <c:if test="${param.classNum == cls}">selected</c:if>>${cls}</option>
-        </c:forEach>
-    </select>
-=======
   .filter-form select {
     border: 1px solid #ccc;
     border-radius: 4px;
   }
->>>>>>> branch 'master' of https://github.com/kuroda0518/2_3scoremanager.git
 
-<<<<<<< HEAD
-    <label>科目ID</label>
-<select name="subject">
-  <option value="">-----</option>
-  <c:forEach var="subj" items="${subjectList}">
-    <option value="${subj['id']}"
-      <c:if test="${param.subject == subj['id']}">selected</c:if>>
-      ${subj['name']}
-    </option>
-  </c:forEach>
-</select>
-=======
   .filter-form button {
     background-color: #4a5568;
     color: white;
@@ -67,7 +35,6 @@
     border-radius: 4px;
     cursor: pointer;
   }
->>>>>>> branch 'master' of https://github.com/kuroda0518/2_3scoremanager.git
 
   .filter-form label {
     font-weight: bold;
@@ -152,40 +119,37 @@
         <button type="submit">検索</button>
     </form>
 
-  <h2>成績一覧（学生）</h2>
-  <c:if test="${not empty student}">
-    <p>氏名：${student.name}（${student.no}）</p>
-  </c:if>
-  <c:if test="${not empty testList}">
-    <table border="1" style="width:100%; text-align:center;">
-      <thead>
-        <tr>
-<<<<<<< HEAD
-            <th>入学年度</th><th>クラス</th><th>学籍番号</th><th>氏名</th>
-            <th>1回</th><th>2回</th>
-=======
-          <th>科目コード</th>
-          <th>科目名</th>
-          <th>回数</th>
-          <th>点数</th>
->>>>>>> branch 'master' of https://github.com/kuroda0518/2_3scoremanager.git
-        </tr>
-      </thead>
-      <tbody>
-        <c:forEach var="test" items="${testList}">
-          <tr>
-            <td>${test.subjectCd}</td>
-            <td>${test.name}</td>
-            <td>${test.no}</td>
-            <td>${test.point}</td>
-          </tr>
-        </c:forEach>
-      </tbody>
-    </table>
-  </c:if>
-  <c:if test="${empty testList && not empty error}">
-    <p style="color:red;">${error}</p>
-  </c:if>
+    <!-- 成績一覧 -->
+	<h2>成績一覧（科目別）</h2>
+	<c:if test="${not empty subject}">
+	   <p>科目：${subject.name}</p>
+	</c:if>
+	<c:if test="${not empty testDisplayList}">
+	  <table border="1" style="width:100%; text-align:center; margin-top:20px;">
+	    <tr>
+	      <th>入学年度</th>
+	      <th>クラス</th>
+	      <th>学籍番号</th>
+	      <th>氏名</th>
+	      <th>1回目</th>
+	      <th>2回目</th>
+	    </tr>
+	    <c:forEach var="td" items="${testDisplayList}">
+	      <tr>
+	        <td>${td.entYear}</td>
+	        <td>${td.classNum}</td>
+	        <td>${td.studentNo}</td>
+	        <td>${td.name}</td>
+	        <td>${td.point1}</td>
+	        <td>${td.point2}</td>
+	      </tr>
+	    </c:forEach>
+	  </table>
+	</c:if>
+
+
+
 </div>
 
 <jsp:include page="/common/footer.jsp" />
+
