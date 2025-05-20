@@ -37,7 +37,7 @@ public class TestRegistExecuteAction extends Action {
         request.setAttribute("studentList", studentList);
         request.setAttribute("subjectList", subjectList);
         request.setAttribute("entYearList", entYearList);
-        request.setAttribute("classNumList",classNum);
+        request.setAttribute("classNumList",classNumList);
 
         request.setAttribute("entYear", entYear);
         request.setAttribute("classNum", classNum);
