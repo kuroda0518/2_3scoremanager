@@ -6,7 +6,7 @@ public class Test implements Serializable {
     private String studentNo;
     private String subjectCd;
     private String schoolCd;
-    private int no; // 回数
+    private int no; 
     private int point;
     private String classNum;
     private int entYear;

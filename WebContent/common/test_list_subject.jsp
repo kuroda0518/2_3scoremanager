@@ -119,35 +119,37 @@
         <button type="submit">検索</button>
     </form>
 
-  <h2>成績一覧（学生）</h2>
-  <c:if test="${not empty student}">
-    <p>氏名：${student.name}（${student.no}）</p>
-  </c:if>
-  <c:if test="${not empty testList}">
-    <table border="1" style="width:100%; text-align:center;">
-      <thead>
-        <tr>
-          <th>科目コード</th>
-          <th>科目名</th>
-          <th>回数</th>
-          <th>点数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <c:forEach var="test" items="${testList}">
-          <tr>
-            <td>${test.subjectCd}</td>
-            <td>${test.name}</td>
-            <td>${test.no}</td>
-            <td>${test.point}</td>
-          </tr>
-        </c:forEach>
-      </tbody>
-    </table>
-  </c:if>
-  <c:if test="${empty testList && not empty error}">
-    <p style="color:red;">${error}</p>
-  </c:if>
+    <!-- 成績一覧 -->
+	<h2>成績一覧（科目別）</h2>
+	<c:if test="${not empty subject}">
+	   <p>科目：${subject.name}</p>
+	</c:if>
+	<c:if test="${not empty testDisplayList}">
+	  <table border="1" style="width:100%; text-align:center; margin-top:20px;">
+	    <tr>
+	      <th>入学年度</th>
+	      <th>クラス</th>
+	      <th>学籍番号</th>
+	      <th>氏名</th>
+	      <th>1回目</th>
+	      <th>2回目</th>
+	    </tr>
+	    <c:forEach var="td" items="${testDisplayList}">
+	      <tr>
+	        <td>${td.entYear}</td>
+	        <td>${td.classNum}</td>
+	        <td>${td.studentNo}</td>
+	        <td>${td.name}</td>
+	        <td>${td.point1}</td>
+	        <td>${td.point2}</td>
+	      </tr>
+	    </c:forEach>
+	  </table>
+	</c:if>
+
+
+
 </div>
 
 <jsp:include page="/common/footer.jsp" />
+
