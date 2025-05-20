@@ -8,9 +8,10 @@
         ${message}
     </h2>
 
-    <a href="TestRegist.action" style="padding: 8px 16px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 4px;">
-        戻る
-    </a>
+    <div style="margin-top: 20px;">
+        <a href="${pageContext.request.contextPath}/TestRegist.action" style="margin-right: 20px;">戻る</a>
+        <a href="${pageContext.request.contextPath}/TestList.action">成績参照</a>
+    </div>
 
 </div>
 
