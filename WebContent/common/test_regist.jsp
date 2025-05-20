@@ -77,6 +77,11 @@
     <button type="submit">検索</button>
 </form>
 
+
+<c:if test="${not empty subjectName && not empty no}">
+  <p style="font-size: 16px; font-weight: bold;">科目：${subjectName}（${no}回）</p>
+</c:if>
+
 <!-- 学生リスト表示（変更・削除対応） -->
 <c:choose>
   <c:when test="${not empty studentList}">
@@ -110,7 +115,7 @@
       </table>
 
       <div style="text-align: center; margin-top: 16px;">
-        <button type="submit" style="padding: 8px 16px;">登録して終了</button>
+        <button type="submit" style="padding: 8px 16px;">登録して終了。</button>
       </div>
     </form>
   </c:when>
