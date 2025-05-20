@@ -33,6 +33,7 @@ public class TestRegistAction extends Action {
 
         return "test_regist.jsp";
 
+
     }
 
 }
