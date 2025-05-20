@@ -127,19 +127,19 @@
 	<c:if test="${not empty testDisplayList}">
 	  <table border="1" style="width:100%; text-align:center; margin-top:20px;">
 	    <tr>
-	      <th>学籍番号</th>
-	      <th>氏名</th>
 	      <th>入学年度</th>
 	      <th>クラス</th>
+	      <th>学籍番号</th>
+	      <th>氏名</th>
 	      <th>1回目</th>
 	      <th>2回目</th>
 	    </tr>
 	    <c:forEach var="td" items="${testDisplayList}">
 	      <tr>
-	        <td>${td.studentNo}</td>
-	        <td>${td.name}</td>
 	        <td>${td.entYear}</td>
 	        <td>${td.classNum}</td>
+	        <td>${td.studentNo}</td>
+	        <td>${td.name}</td>
 	        <td>${td.point1}</td>
 	        <td>${td.point2}</td>
 	      </tr>
