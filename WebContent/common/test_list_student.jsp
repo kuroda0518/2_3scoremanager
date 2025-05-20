@@ -161,11 +161,14 @@
       <thead>
         <tr>
 <<<<<<< HEAD
+        <th>科目名</th>
+=======
+<<<<<<< HEAD
             <th>入学年度</th><th>クラス</th><th>学籍番号</th><th>氏名</th>
             <th>1回</th><th>2回</th>
 =======
+>>>>>>> branch 'master' of https://github.com/kuroda0518/2_3scoremanager.git
           <th>科目コード</th>
-          <th>科目名</th>
           <th>回数</th>
           <th>点数</th>
 >>>>>>> branch 'master' of https://github.com/kuroda0518/2_3scoremanager.git
@@ -174,8 +177,8 @@
       <tbody>
         <c:forEach var="test" items="${testList}">
           <tr>
-            <td>${test.subjectCd}</td>
             <td>${test.name}</td>
+            <td>${test.subjectCd}</td>
             <td>${test.no}</td>
             <td>${test.point}</td>
           </tr>
