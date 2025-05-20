@@ -14,11 +14,9 @@ import tool.Action;
 public class TestRegistAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setCharacterEncoding("UTF-8");
-
         // ログインユーザーから学校コード取得
         Teacher teacher = (Teacher) request.getSession().getAttribute("loginUser");
         String schoolCd = teacher.getSchoolCd();
-
         // セレクトボックス用データ取得
         StudentDao studentDao = new StudentDao();
         SubjectDao subjectDao = new SubjectDao();
@@ -28,14 +26,15 @@ public class TestRegistAction extends Action {
         List<Subject> subjectList = subjectDao.filter(schoolCd);
 
         // JSPに渡す
+
         request.setAttribute("entYearList", entYearList);
         request.setAttribute("classNumList", classNumList);
         request.setAttribute("subjectList", subjectList);
 
         return "test_regist.jsp";
+
+
     }
 
 }
-
-
 
