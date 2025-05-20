@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Student;
+import bean.Teacher;
 import dao.StudentDao;
 import tool.Action;
 
@@ -24,7 +25,9 @@ public class StudentCreateAction extends Action {
         String entYearStr = request.getParameter("entYear");
         String classNum = request.getParameter("classNum");
         String isAttendStr = request.getParameter("isAttend");
-        String schoolCd = request.getParameter("schoolCd");
+
+        Teacher user = (Teacher) request.getSession().getAttribute("loginUser");
+        String schoolCd = user.getSchoolCd();  // ✅ 一覧表示と同じ条件になる！
 
         boolean hasError = false;
 

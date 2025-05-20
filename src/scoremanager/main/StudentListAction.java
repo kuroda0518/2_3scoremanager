@@ -26,6 +26,7 @@ public class StudentListAction extends Action {
             response.sendRedirect("Login.action");
             return null;
         }
+
         String schoolCd = user.getSchoolCd();
 
 
