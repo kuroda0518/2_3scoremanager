@@ -24,12 +24,15 @@
     </select>
 
     <label>科目ID</label>
-    <select name="subject">
-        <option value="">-- 選択 --</option>
-        <c:forEach var="subj" items="${subjectList}">
-            <option value="${subj.id}" <c:if test="${param.subject == subj.id}">selected</c:if>>${subj.name}</option>
-        </c:forEach>
-    </select>
+<select name="subject">
+  <option value="">-- 選択 --</option>
+  <c:forEach var="subj" items="${subjectList}">
+    <option value="${subj['id']}"
+      <c:if test="${param.subject == subj['id']}">selected</c:if>>
+      ${subj['name']}
+    </option>
+  </c:forEach>
+</select>
 
     <input type="submit" value="検索" />
 </form>
