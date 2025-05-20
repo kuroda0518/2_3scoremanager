@@ -44,6 +44,7 @@ public class TestRegistExecuteAction extends Action {
         request.setAttribute("subject", subjectCd);
         request.setAttribute("no", no);
 
+
         return "test_regist.jsp";
     }
 }
