@@ -115,7 +115,7 @@
       </table>
 
       <div style="text-align: center; margin-top: 16px;">
-        <button type="submit" style="padding: 8px 16px;">登録して終了</button>
+        <button type="submit" style="padding: 8px 16px;">登録して終了。</button>
       </div>
     </form>
   </c:when>

@@ -49,7 +49,7 @@ public class TestRegistExecuteAction extends Action {
             subjectCd == null || subjectCd.isEmpty() ||
             testIdStr == null || testIdStr.isEmpty()) {
 
-            request.setAttribute("message", "すべての項目を選択してください");
+            request.setAttribute("message", "すべての項目を選択してください。");
             return "test_regist.jsp";
         }
 
