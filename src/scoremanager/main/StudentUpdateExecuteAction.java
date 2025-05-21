@@ -13,7 +13,7 @@ public class StudentUpdateExecuteAction extends Action {
 
         String no = request.getParameter("no");
         String name = request.getParameter("name");
-        String classNum = request.getParameter("class_num");
+        String classNum = request.getParameter("classNum");
         String entYearStr = request.getParameter("ent_year");
         String isAttendParam = request.getParameter("is_attend");
 
