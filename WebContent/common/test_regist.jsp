@@ -75,7 +75,7 @@
     <label>回数：</label>
     <select name="no">
         <option value="">------</option>
-        <c:forEach var="i" begin="1" end="4">
+        <c:forEach var="i" begin="1" end="2">
             <option value="${i}" <c:if test="${param.no == i}">selected</c:if>>${i}</option>
         </c:forEach>
     </select>
