@@ -54,6 +54,7 @@ public class TestListSubjectExecuteAction extends Action {
             return "test_list.jsp"; // 元の画面に戻す
         }
 
+
         int entYear = Integer.parseInt(entYearStr);
 
         // DAOから取得
