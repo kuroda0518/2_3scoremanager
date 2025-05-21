@@ -25,7 +25,7 @@ public class LoginAction extends Action {
             } else {
                 // ログイン失敗（IDかパスワードが間違っている）
                 request.setAttribute("error", "IDまたはパスワードが間違っています。");
-                return "/main/login.jsp";
+                return "/main/login-in.jsp";
             }
 
         } catch (Exception e) {
