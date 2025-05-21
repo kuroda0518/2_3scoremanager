@@ -3,8 +3,8 @@
 
     <ul style="list-style:none; padding:0;">
 
-        <li><a href="<%= request.getContextPath() %>/common/main.jsp">メニュー</a></li>
-        <li><a href="<%= request.getContextPath() %>/StudentList.action">学生一覧</a></li>
+        <li><a href="<%= request.getContextPath() %>/common/main.jsp">メニュー</a></li><br>
+        <li><a href="<%= request.getContextPath() %>/StudentList.action">学生一覧</a></li><br>
         <li><label>成績管理</label></li>
         <li><a href="<%= request.getContextPath() %>/TestRegist.action">成績登録</a></li>
         <li><a href="<%= request.getContextPath() %>/TestList.action">成績参照</a></li><br>

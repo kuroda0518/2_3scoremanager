@@ -41,6 +41,12 @@
   }
 </style>
 
+<c:if test="${not empty message}">
+  <p style="color: orange; font-weight: bold; font-size: 14px;">
+    ${message}
+  </p>
+</c:if>
+
 <form action="<%= request.getContextPath() %>/TestRegistExecute.action" method="post" class="filter-form">
     <label>入学年度：</label>
     <select name="entYear">
@@ -69,7 +75,7 @@
     <label>回数：</label>
     <select name="no">
         <option value="">------</option>
-        <c:forEach var="i" begin="1" end="4">
+        <c:forEach var="i" begin="1" end="2">
             <option value="${i}" <c:if test="${param.no == i}">selected</c:if>>${i}</option>
         </c:forEach>
     </select>
@@ -77,12 +83,11 @@
     <button type="submit">検索</button>
 </form>
 
-
 <c:if test="${not empty subjectName && not empty no}">
   <p style="font-size: 16px; font-weight: bold;">科目：${subjectName}（${no}回）</p>
 </c:if>
 
-<!-- 学生リスト表示（変更・削除対応） -->
+<!-- 学生リスト表示 -->
 <c:choose>
   <c:when test="${not empty studentList}">
     <form action="<%= request.getContextPath() %>/TestRegistDone.action" method="post">
@@ -107,7 +112,7 @@
             <td>${tes.name}</td>
             <td>
               <input type="number" name="point_${tes.studentNo}"
-                     value="${tes.point == -1 ? '' : tes.point}"
+                     value="${tes.point ne -1 ? tes.point : ''}"
                      min="0" max="100" placeholder="0〜100" />
             </td>
           </tr>

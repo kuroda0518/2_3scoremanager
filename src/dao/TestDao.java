@@ -34,7 +34,8 @@ public class TestDao extends Dao {
                     test.setName(rs.getString("name"));
                     test.setEntYear(rs.getInt("ent_year"));
                     test.setClassNum(rs.getString("class_num"));
-                    test.setPoint(rs.getInt("point"));
+                    Integer point = (Integer) rs.getObject("point");
+                    test.setPoint(point);
                     test.setNo(no);
                     test.setSubjectCd(subjectCd);
                     test.setSchoolCd(schoolCd);
@@ -48,7 +49,7 @@ public class TestDao extends Dao {
 
     public void updateOrDelete(Test test) throws Exception {
         try (Connection con = getConnection()) {
-            if (test.getPoint() >= 0) {
+            if (test.getPoint() != null && test.getPoint() >= 0) {
                 // 点数がある → UPDATE or INSERT
                 String sql = "MERGE INTO TEST (STUDENT_NO, SUBJECT_CD, NO, POINT, SCHOOL_CD, CLASS_NUM) "
                            + "KEY(STUDENT_NO, SUBJECT_CD, NO) VALUES (?, ?, ?, ?, ?, ?)";
@@ -56,7 +57,7 @@ public class TestDao extends Dao {
                     st.setString(1, test.getStudentNo());
                     st.setString(2, test.getSubjectCd());
                     st.setInt(3, test.getNo());
-                    st.setInt(4, test.getPoint());
+                    st.setObject(4, test.getPoint(), java.sql.Types.INTEGER); // ← ここが重要
                     st.setString(5, test.getSchoolCd());
                     st.setString(6, test.getClassNum());
                     st.executeUpdate();
@@ -73,6 +74,7 @@ public class TestDao extends Dao {
             }
         }
     }
+
 
 
 

@@ -56,14 +56,12 @@
         <input type="text" name="name" value="${student.name}" maxlength="30" required>
       </div>
 
-      <div class="form-group">
-        <label>クラス：</label>
-        <select name="class_num">
-          <option value="201" ${student.classNum == '201' ? 'selected' : ''}>201</option>
-          <option value="202" ${student.classNum == '202' ? 'selected' : ''}>202</option>
-          <option value="203" ${student.classNum == '203' ? 'selected' : ''}>203</option>
-        </select>
-      </div>
+      <label for="classNum">クラス：</label>
+      <select name="classNum" id="classNum">
+        <c:forEach var="classNum" items="${classNumList}">
+            <option value="${classNum}">${classNum}</option>
+        </c:forEach>
+      </select>
 
       <div class="checkbox-group">
         <label>在学中：</label>

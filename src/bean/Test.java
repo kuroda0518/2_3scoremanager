@@ -6,8 +6,8 @@ public class Test implements Serializable {
     private String studentNo;
     private String subjectCd;
     private String schoolCd;
-    private int no; 
-    private int point;
+    private int no;
+    private Integer point;
     private String classNum;
     private int entYear;
     private String name;
@@ -24,8 +24,8 @@ public class Test implements Serializable {
     public int getNo() { return no; }
     public void setNo(int no) { this.no = no; }
 
-    public int getPoint() { return point; }
-    public void setPoint(int point) { this.point = point; }
+    public Integer getPoint() { return point; }
+    public void setPoint(Integer point) { this.point = point; }
 
     public String getClassNum() { return classNum; }
     public void setClassNum(String classNum) { this.classNum = classNum; }
