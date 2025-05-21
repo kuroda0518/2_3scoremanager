@@ -15,7 +15,7 @@
                 <a href="<%=request.getContextPath()%>/Logout.action" style="color: black;">ログアウト</a>
             </c:when>
             <c:otherwise>
-                <a href="<%=request.getContextPath()%>/main/login-in.jsp" style="color: black;">ログイン</a>
+                <a href="<%=request.getContextPath()%>/Login.action" style="color: black;">ログイン</a>
             </c:otherwise>
         </c:choose>
     </div>

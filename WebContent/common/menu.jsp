@@ -3,7 +3,7 @@
 
     <ul style="list-style:none; padding:0;">
 
-        <li><a href="http://localhost:8080/scoremanager/main/Menu.action">メニュー</a></li><br>
+        <li><a href="<%= request.getContextPath() %>/Menu.action">メニュー</a></li><br>
         <li><a href="<%= request.getContextPath() %>/StudentList.action">学生一覧</a></li><br>
         <li><label>成績管理</label></li>
         <li><a href="<%= request.getContextPath() %>/TestRegist.action">成績登録</a></li>

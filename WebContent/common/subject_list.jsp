@@ -4,7 +4,7 @@
 <jsp:include page="/common/header.jsp" />
 <jsp:include page="/common/menu.jsp" />
 
-<div style="margin-left:200px; padding: 20px;">
+<div style="margin-left:200px; padding: 20px; margin-bottom: 40px;">
 
         <h2>科目管理</h2>
         <div style="text-align: right; margin-bottom: 10px;">

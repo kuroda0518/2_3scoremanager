@@ -79,7 +79,7 @@
     <div class="error-message">${error}</div>
 </c:if>
 
-            <form action="Login.action" method="post">
+            <form action="LoginExecute.action" method="post">
                 <p><input type="text" name="id" placeholder="ID" required></p><br>
 
                 <input type="password" name="password" id="password" placeholder="パスワード" required><br>
