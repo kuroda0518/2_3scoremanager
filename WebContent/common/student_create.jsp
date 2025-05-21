@@ -36,8 +36,7 @@
         <label>在籍中：</label>
         <input type="checkbox" name="isAttend" value="true" <c:if test="${isAttend == 'true'}">checked</c:if>><br><br>
 
-        <label>学校コード：</label><br>
-        <input type="text" name="schoolCd" value="${schoolCd}" required style="width: 100%; padding: 6px; margin-bottom: 16px;"><br>
+
 
         <input type="submit" value="登録して終了" style="padding: 8px 16px; background-color: #4a5568; color: white; border: none; border-radius: 4px;">
     </form>
