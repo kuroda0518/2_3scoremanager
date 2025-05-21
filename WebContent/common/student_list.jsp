@@ -79,6 +79,10 @@
 
 
     <!-- 学生リスト -->
+    <p style="font-size: 14px; color: #333; margin-bottom: 12px;">
+    検索結果：${fn:length(studentList)}件
+	</p>
+
     <c:choose>
         <c:when test="${not empty studentList}">
             <table border="1" cellpadding="5" cellspacing="0" style="width:100%; text-align:center;">

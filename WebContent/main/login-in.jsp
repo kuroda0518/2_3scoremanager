@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
@@ -100,4 +101,8 @@
         }
     </script>
 </body>
+
 </html>
+
+<%@ include file="/common/footer.jsp" %>
+
