@@ -18,6 +18,7 @@ public class StudentListAction extends Action {
         String entYearStr = request.getParameter("entYear");
         String classNum = request.getParameter("classNum");
         String isAttendStr = request.getParameter("isAttend");
+        String searched = request.getParameter("searched");
 
         // セッションからログイン中のユーザー取得
 
@@ -32,7 +33,12 @@ public class StudentListAction extends Action {
 
         // 型変換
         Integer entYear = (entYearStr != null && !entYearStr.isEmpty()) ? Integer.parseInt(entYearStr) : null;
-        Boolean isAttend = (isAttendStr != null) ? true : null;
+
+        Boolean isAttend = null;
+        if (searched != null) {
+            isAttend = (isAttendStr != null) ? true : false;
+        }
+
 
         // 学生リスト取得
         StudentDao studentDao = new StudentDao();

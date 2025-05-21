@@ -53,6 +53,8 @@
 </style>
 
 <form action="<%= request.getContextPath() %>/StudentList.action" method="get" class="filter-form">
+<input type="hidden" name="searched" value="true">
+
     <label>入学年度：</label>
     <select name="entYear">
         <option value="">------</option>
@@ -106,7 +108,7 @@
                                     ○
                                 </c:when>
                                 <c:otherwise>
-                                    -
+                                    ✕
                                 </c:otherwise>
                             </c:choose>
                         </td>
