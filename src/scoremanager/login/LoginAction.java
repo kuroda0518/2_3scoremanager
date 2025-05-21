@@ -21,7 +21,7 @@ public class LoginAction extends Action {
 
             if (teacher != null) {
                 session.setAttribute("loginUser", teacher);
-                return "/common/main.jsp";
+                return "Menu.action";
             } else {
                 // ログイン失敗（IDかパスワードが間違っている）
                 request.setAttribute("error", "IDまたはパスワードが間違っています。");
