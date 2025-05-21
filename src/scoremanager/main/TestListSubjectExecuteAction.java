@@ -50,7 +50,7 @@ public class TestListSubjectExecuteAction extends Action {
         if (entYearStr == null || entYearStr.isEmpty() ||
             classNum == null || classNum.isEmpty() ||
             subjectCd == null || subjectCd.isEmpty()) {
-            request.setAttribute("error", "すべての項目を選択してください。");
+            request.setAttribute("error", "入学年度とクラスと科目を選択してください");
             return "test_list.jsp"; // 元の画面に戻す
         }
 
