@@ -96,10 +96,7 @@
         <button type="submit">検索</button>
     </form>
 
-    <c:if test="${not empty error}">
-    <p>氏名：${student.name}（${student.no}）</p>
-        <p class="error-message">${error}</p>
-    </c:if>
+    <p class="error-message">${error}</p>
 
     <p style="color: #007bff; font-size: 14px; margin: 6px 0 10px 10px;">
     科目情報を選択または学生情報を入力して検索をクリックしてください
