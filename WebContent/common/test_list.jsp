@@ -57,6 +57,7 @@
 
     <h3>成績参照</h3>
     <form action="<%= request.getContextPath() %>/TestListSubjectExecute.action" method="post" class="filter-form">
+    <label>科目情報</label>
         <label>入学年度：</label>
         <select name="entYear">
             <option value="">------</option>
@@ -99,6 +100,11 @@
     <p>氏名：${student.name}（${student.no}）</p>
         <p class="error-message">${error}</p>
     </c:if>
+
+    <p style="color: #007bff; font-size: 14px; margin: 6px 0 10px 10px;">
+    科目情報を選択または学生情報を入力して検索をクリックしてください
+	</p>
+
 
     <%-- 成績一覧の表示 (必要に応じて追加) --%>
 
