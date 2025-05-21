@@ -48,7 +48,7 @@ public class TestRegistDoneAction extends Action {
             String studentNo = stu.getNo();
             String pointParam = request.getParameter("point_" + studentNo);
 
-            int point = -1;
+            Integer point = -1;
             if (pointParam != null && !pointParam.trim().isEmpty()) {
                 try {
                     point = Integer.parseInt(pointParam);
@@ -57,8 +57,25 @@ public class TestRegistDoneAction extends Action {
                     }
                 } catch (NumberFormatException e) {
                     request.setAttribute("message", "点数は0〜100の間で入力してください");
+
+                    // 入力値の保持
+                    request.setAttribute("entYear", entYear);
+                    request.setAttribute("classNum", classNum);
+                    request.setAttribute("subject", subjectCd);
+                    request.setAttribute("no", testNo);
+
+                    // セレクトボックス用リスト
+                    request.setAttribute("entYearList", studentDao.getEntYearList(schoolCd));
+                    request.setAttribute("classNumList", studentDao.getClassNumList(schoolCd));
+                    request.setAttribute("subjectList", new SubjectDao().filter(schoolCd));
+
+                    // 入力欄再表示のための studentList（Test型）
+                    List<Test> studentList = new TestDao().filter(schoolCd, entYear, classNum, subjectCd, testNo);
+                    request.setAttribute("studentList", studentList);
+
                     return "test_regist.jsp";
                 }
+
             }
 
             Test test = new Test();
